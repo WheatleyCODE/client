@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.mainBlock {
+  @include flex-center;
+  position: sticky;
+  background-color: $colorLightGrey;
+  height: 60px;
+  position: sticky;
+  top: -2px;
+}
+
+.mainBlock[stuck] {
+  box-shadow: 0 0 5px 0 $colorBlack;
+}

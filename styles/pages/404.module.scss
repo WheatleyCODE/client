@@ -1,0 +1,18 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.mainBlock {
+  @include flex-center;
+  flex-direction: column;
+  padding-top: 150px;
+
+  .title {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+
+  i {
+    margin-top: 10px;
+    font-size: 80px;
+  }
+}

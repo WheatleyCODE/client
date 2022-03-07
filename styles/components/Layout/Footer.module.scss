@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.mainBlock {
+  @include flex-center;
+  height: 600px;
+  background-color: $colorBlack;
+}
+
+.color {
+  color: $colorWhite;
+}
