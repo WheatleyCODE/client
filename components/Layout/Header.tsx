@@ -6,7 +6,11 @@ export const Header: FC = () => {
   return (
     <header className={s.mainBlock}>
       <Width>
-        <h1>Header</h1>
+        <div className={s.header}>
+          <div className={s.logoBlock}></div>
+          <div className={s.socialsBlock}></div>
+          <div className={s.buttonsBlock}></div>
+        </div>
       </Width>
     </header>
   );

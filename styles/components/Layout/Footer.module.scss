@@ -3,10 +3,30 @@
 
 .mainBlock {
   @include flex-center;
-  height: 600px;
+  flex-direction: column;
   background-color: $colorBlack;
 }
 
 .color {
   color: $colorWhite;
+}
+
+.linksBlock {
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.socialsBlock {
+  display: flex;
+  justify-content: flex-end;
+  height: 100px;
+  color: white;
+}
+
+.copyBlock {
+  border-top: 1px solid $colorLightGrey;
+  padding-top: 20px;
+  height: 100px;
+  color: white;
 }

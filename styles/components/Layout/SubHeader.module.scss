@@ -5,11 +5,26 @@
   @include flex-center;
   position: sticky;
   background-color: $colorLightGrey;
-  height: 60px;
   position: sticky;
   top: -2px;
 }
 
 .mainBlock[stuck] {
   box-shadow: 0 0 5px 0 $colorBlack;
+}
+
+.subHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  width: 900px;
+  background-color: blue;
+  height: 60px;
+}
+
+.cart {
+  width: 200px;
+  background-color: blue;
 }

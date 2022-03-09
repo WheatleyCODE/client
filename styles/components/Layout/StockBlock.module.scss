@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.mainBlock {
+  @include flex-center;
+  background-color: $colorOrange;
+  width: 100%;
+}
+
+.stock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+
+  .text {
+    display: flex;
+
+    i {
+      margin-right: 20px;
+      font-size: 2rem;
+      color: $colorWhite;
+    }
+
+    .title {
+      color: $colorWhite;
+    }
+  }
+}
+
+.buttonBlock {
+  .button {
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    background-color: $colorWhite;
+    color: $colorOrange;
+    border: none;
+  }
+}

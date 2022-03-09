@@ -1,6 +1,6 @@
-import { FC, useEffect, useRef } from 'react';
-import s from 'styles/components/Layout/SubHeader.module.scss';
+import { FC, useEffect } from 'react';
 import { Width } from 'components';
+import s from 'styles/components/Layout/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
   useEffect(() => {
@@ -19,7 +19,10 @@ export const SubHeader: FC = () => {
   return (
     <div className={s.mainBlock}>
       <Width>
-        <h1>SubHeader</h1>
+        <div className={s.subHeader}>
+          <nav className={s.menu}></nav>
+          <div className={s.cart}></div>
+        </div>
       </Width>
     </div>
   );

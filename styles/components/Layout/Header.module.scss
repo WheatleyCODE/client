@@ -3,5 +3,27 @@
 
 .mainBlock {
   @include flex-center;
-  height: 120px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoBlock {
+  width: 400px;
+  height: 100px;
+  background-color: red;
+}
+
+.socialsBlock {
+  width: 200px;
+  height: 100px;
+  background-color: red;
+}
+
+.buttonsBlock {
+  width: 200px;
+  height: 100px;
+  background-color: red;
 }
