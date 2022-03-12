@@ -14,15 +14,18 @@
   height: 70px;
 
   .text {
+    cursor: pointer;
     display: flex;
+    align-items: center;
 
-    i {
-      margin-right: 20px;
-      font-size: 2rem;
+    svg {
+      margin-right: 10px;
+      font-size: 3rem;
       color: $colorWhite;
     }
 
     .title {
+      font-size: 1.7rem;
       color: $colorWhite;
     }
   }
@@ -30,11 +33,70 @@
 
 .buttonBlock {
   .button {
-    border-radius: 20px;
+    border-radius: 40px;
     text-transform: capitalize;
     font-size: 1.2rem;
     background-color: $colorWhite;
     color: $colorOrange;
     border: none;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    &:hover {
+      background-color: $colorLightOrange;
+    }
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .stock {
+    height: 60px;
+
+    .text {
+      svg {
+        font-size: 2rem;
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .buttonBlock {
+    .button {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .stock {
+    height: 55px;
+
+    .text {
+      .title {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .buttonBlock {
+    .button {
+      font-size: 1rem;
+      padding: 5px 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .stock {
+    height: 55px;
+
+    .text {
+      svg {
+        display: none;
+      }
+    }
   }
 }

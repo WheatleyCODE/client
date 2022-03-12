@@ -8,11 +8,12 @@ export interface DesctopMenuItemProps {
 }
 
 export const DesctopMenuItem: FC<DesctopMenuItemProps> = ({ item }) => {
+  const { Icon } = item;
   return (
     <div className={s.mainBlock}>
-      <Link href={item.path}>
-        <div>
-          {item.icon && <i className={`${item.icon} ${s.icon}`} />}
+      <Link passHref href={item.path}>
+        <div className={s.link}>
+          {Icon && <Icon />}
           {item.name}
         </div>
       </Link>

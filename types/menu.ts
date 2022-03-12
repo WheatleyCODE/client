@@ -1,3 +1,6 @@
+import { SvgIconTypeMap } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+
 export enum pathRoutes {
   HOME = '/',
   SEARCH = '/search',
@@ -15,7 +18,7 @@ export interface MenuItem {
   id: number;
   name: string;
   path: pathRoutes;
-  icon: string | null;
+  Icon: OverridableComponent<SvgIconTypeMap> | null;
 }
 
 export interface Menu {

@@ -1,12 +1,8 @@
 @import '../../variables.scss';
 
 .mainBlock {
-  margin-bottom: 10px;
-
   .title {
-    border-bottom: 1px solid $colorGrey;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
     font-size: 1.5rem;
   }
 }
@@ -17,4 +13,10 @@
 
 .mainBlock.white {
   color: $colorWhite;
+}
+
+@media screen and (max-width: 950px) {
+  .mainBlock {
+    padding-bottom: 20px;
+  }
 }

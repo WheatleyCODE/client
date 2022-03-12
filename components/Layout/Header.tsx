@@ -7,9 +7,9 @@ export const Header: FC = () => {
     <header className={s.mainBlock}>
       <Width>
         <div className={s.header}>
-          <div className={s.logoBlock}></div>
-          <div className={s.socialsBlock}></div>
-          <div className={s.buttonsBlock}></div>
+          <div className={s.logoBlock}>1</div>
+          <div className={s.socialsBlock}>2</div>
+          <div className={s.buttonsBlock}>3</div>
         </div>
       </Width>
     </header>
