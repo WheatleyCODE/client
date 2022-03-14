@@ -1,6 +1,5 @@
 import { Footer } from './Footer';
-import { Header } from './Header';
-import { SubHeader } from './SubHeader';
+import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
 import s from 'styles/components/Layout/MainLayout.module.scss';
