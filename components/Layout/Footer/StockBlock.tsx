@@ -19,7 +19,7 @@ export const StockBlock: FC<StockBlockProps> = ({ title }) => {
           </div>
           <div className={s.buttonBlock}>
             <Button className={s.button} size="medium" variant="outlined">
-              Подробнее
+              <h4>Подробнее</h4>
             </Button>
           </div>
         </div>

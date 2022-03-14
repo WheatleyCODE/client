@@ -1,0 +1,47 @@
+@import 'styles/variables.scss';
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+
+  .logoText {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    height: 45px;
+    font-size: 2.2rem;
+  }
+
+  .logoBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button {
+    margin-top: 15px;
+    padding: 0;
+    width: 100%;
+    background-color: $colorOrange;
+    color: $colorWhite;
+    border-radius: 50px;
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border: none;
+    height: 45px;
+    font-size: 1.3rem;
+
+    svg {
+      font-size: 3rem;
+      height: 100%;
+    }
+  }
+
+  .buttonText {
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+}

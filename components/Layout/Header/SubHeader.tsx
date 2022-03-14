@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { Width } from 'components';
-import s from 'styles/components/Layout/SubHeader.module.scss';
+import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
   useEffect(() => {
