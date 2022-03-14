@@ -19,7 +19,7 @@ export const Header: FC = () => {
           <div className={s.socialsBlock}>
             <Phone className={s.phone} />
             <div className={s.messengers}>
-              <Messengers className={s.messanger} height="46" width="46" />
+              <Messengers className={s.messanger} height="38" width="38" />
             </div>
           </div>
           <div className={s.buttonsBlock}>

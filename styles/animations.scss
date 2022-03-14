@@ -1,4 +1,4 @@
-@keyframes showModal {
+@keyframes defaultShow {
   0% {
     opacity: 0;
   }
@@ -16,4 +16,44 @@
   100% {
     transform: rotate(5deg);
   }
+}
+
+@keyframes showMiniLogo {
+  0% {
+    margin-left: 0px;
+  }
+
+  100% {
+    margin-left: 50px;
+  }
+}
+
+@keyframes backMiniLogo {
+  0% {
+    margin-left: 50px;
+  }
+
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes showMiniLogoMenu {
+  0% {
+    transform: translateX(-55px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.showMiniLogo-enter-active {
+  animation: showMiniLogoMenu ease-in 0.2s forwards;
+}
+
+.showMiniLogo-exit-active {
+  animation: showMiniLogoMenu ease-in 0.2s forwards reverse;
 }

@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 50px;
 
   .text {
     cursor: pointer;
@@ -20,12 +20,12 @@
 
     svg {
       margin-right: 10px;
-      font-size: 3rem;
+      font-size: 2.3rem;
       color: $colorWhite;
     }
 
     .title {
-      font-size: 1.7rem;
+      font-size: 1.3rem;
       color: $colorWhite;
     }
   }
@@ -34,12 +34,12 @@
 .buttonBlock {
   .button {
     border-radius: 40px;
+    height: 36px;
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background-color: $colorWhite;
     color: $colorOrange;
     border: none;
-    letter-spacing: 0.4px;
     padding-right: 20px;
     padding-left: 20px;
 

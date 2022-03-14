@@ -212,3 +212,30 @@ export const socials = [
     path: '/',
   },
 ];
+
+export const subHeaderMenu = [
+  {
+    name: 'Штрих-корректоры',
+    path: 'id1',
+  },
+  {
+    name: 'Маркеры',
+    path: 'id2',
+  },
+  {
+    name: 'Баллончики',
+    path: 'id3',
+  },
+  {
+    name: 'Эмаль',
+    path: 'id4',
+  },
+  {
+    name: 'Комплекты',
+    path: 'id5',
+  },
+  {
+    name: 'Расходные материалы',
+    path: 'id6',
+  },
+];

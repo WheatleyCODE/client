@@ -1,30 +1,99 @@
 @import 'styles/variables.scss';
 @import 'styles/mixins.scss';
+@import 'styles/animations.scss';
 
 .mainBlock {
   @include flex-center;
   position: sticky;
-  background-color: $colorLightGrey;
-  position: sticky;
+  background-color: $colorWhite;
   top: -2px;
 }
 
 .mainBlock[stuck] {
-  box-shadow: 0 0 5px 0 $colorBlack;
+  box-shadow: 0 3px 5px 0 $colorGrey;
 }
 
 .subHeader {
+  height: 55px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  .ul {
+    display: flex;
+
+    li:first-child {
+      padding-left: 0px;
+    }
+
+    li {
+      transition: all 0.15s;
+      cursor: pointer;
+      padding: 2px 7px;
+
+      &:hover {
+        color: $colorOrange;
+      }
+    }
+  }
+
+  .miniLogo {
+    position: absolute;
+    @include flex-center;
+    height: 100%;
+  }
 }
 
 .menu {
-  width: 600px;
-  background-color: blue;
-  height: 60px;
+  margin-left: 0;
+}
+
+.menu.show {
+  animation: showMiniLogo 0.2s ease-in forwards;
+}
+
+.dong {
+  animation: backMiniLogo 0.2s ease-in forwards;
 }
 
 .cart {
-  width: 200px;
-  background-color: blue;
+  .button {
+    background-color: $colorOrange;
+    text-transform: none;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    height: 36px;
+    border: none;
+    color: $colorWhite;
+    width: 180px;
+
+    .content {
+      display: flex;
+      align-items: center;
+    }
+
+    h4 {
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      background-color: $colorDarkOrange;
+
+      .icon {
+        display: inline-block;
+        animation: defaultShow 0.2s ease-in forwards;
+      }
+
+      h4 {
+        border-right: 1px solid $colorWhite;
+        padding-right: 10px;
+      }
+    }
+
+    .icon {
+      display: none;
+      font-size: 2.2rem;
+      margin-left: 5px;
+    }
+  }
 }

@@ -1,18 +1,35 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
+import Image from 'next/image';
+import { subHeaderMenu } from 'consts';
+import { CSSTransition } from 'react-transition-group';
+import { Button } from '@mui/material';
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
+import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
-      { threshold: [1] }
-    );
+  const [isActive, setIsActive] = useState(false);
 
+  useEffect(() => {
     const element = document.querySelector(`.${s.mainBlock}`);
 
     if (element !== null) {
+      const observer = new IntersectionObserver(
+        ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
+        { threshold: [1] }
+      );
+
+      const muObserver = new MutationObserver((mutations) => {
+        mutations.forEach(() => {
+          setIsActive((p) => !p);
+        });
+      });
+
+      const config = { attributes: true, childList: false, characterData: false };
+
       observer.observe(element);
+      muObserver.observe(element, config);
     }
   }, []);
 
@@ -20,8 +37,36 @@ export const SubHeader: FC = () => {
     <div className={s.mainBlock}>
       <Width>
         <div className={s.subHeader}>
-          <nav className={s.menu}></nav>
-          <div className={s.cart}></div>
+          <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            in={isActive}
+            timeout={200}
+            classNames="showMiniLogo"
+          >
+            <div className={s.miniLogo}>
+              <Image className={s.logoImg} height={35} width={35} src={logo} alt={'logo'} />
+            </div>
+          </CSSTransition>
+          <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.dong}`}>
+            <ul className={s.ul}>
+              {subHeaderMenu.map((itm) => (
+                <li key={itm.path}>
+                  <h4>{itm.name}</h4>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className={s.cart}>
+            <Button className={s.button} size="small" variant="outlined">
+              <div className={s.buttonText}>
+                <div className={s.content}>
+                  <h4>Корзина</h4>
+                  <ArrowRightAltRoundedIcon className={s.icon} />
+                </div>
+              </div>
+            </Button>
+          </div>
         </div>
       </Width>
     </div>

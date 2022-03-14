@@ -3,14 +3,14 @@
 .mainBlock {
   display: flex;
   flex-direction: column;
-  width: 230px;
+  width: 195px;
 
   .logoText {
     display: flex;
     align-items: center;
     margin-left: 10px;
-    height: 40px;
-    font-size: 2.2rem;
+    height: 36px;
+    font-size: 1.8rem;
   }
 
   .logoBlock {
@@ -29,16 +29,15 @@
     font-weight: bold;
     letter-spacing: 0.5px;
     border: none;
-    height: 40px;
-    font-size: 1.3rem;
+    height: 36px;
+    font-size: 1.1rem;
 
     &:hover {
       background-color: $colorDarkOrange;
     }
 
-    svg {
-      font-size: 3rem;
-      height: 100%;
+    h4 {
+      margin-right: 10px;
     }
   }
 
@@ -47,4 +46,72 @@
     align-items: center;
     height: 40px;
   }
+}
+
+.hamburgerBlock {
+  margin: 0 auto;
+  width: 22px;
+  height: 14px;
+  position: relative;
+}
+
+.hamburgerBlock .bar {
+  padding: 0;
+  width: 22px;
+  height: 2px;
+  border-radius: 3px;
+  background-color: $colorWhite;
+  display: block;
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+}
+
+.barOne {
+  top: 0;
+}
+
+.barTwo,
+.barThree {
+  top: 6px;
+}
+
+.barThree {
+  right: 0;
+}
+
+.barFore {
+  bottom: 0;
+}
+
+.hamburger .barOne {
+  transform-origin: 5%;
+}
+
+.hamburger .barFore {
+  transform-origin: 5%;
+}
+
+.hamburger.active > .barOne {
+  transform: rotate(40deg);
+  height: 2px;
+  width: 20.5px;
+}
+
+.hamburger.active > .barThree {
+  transform: rotate(45deg);
+  height: 2px;
+  background-color: transparent;
+}
+
+.hamburger.active > .barTwo {
+  transform: rotate(-45deg);
+  height: 2px;
+  background-color: transparent;
+}
+
+.hamburger.active > .barFore {
+  transform: rotate(-40deg);
+  height: 2px;
+  width: 20.5px;
 }
