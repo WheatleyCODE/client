@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { MenuItem } from 'types';
-import s from 'styles/components/Layout/DesctopMenuItem.module.scss';
+import s from 'styles/components/Layout/Menus/DesctopMenuItem.module.scss';
 
 export interface DesctopMenuItemProps {
   item: MenuItem;

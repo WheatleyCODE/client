@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { Width, Phone, Email, Messengers } from 'components';
 import { menu, copyMenu, socials } from 'consts';
 import { StockBlock } from './StockBlock';
-import { DesctopMenuList } from './DesctopMenuList';
-import s from 'styles/components/Layout/Footer.module.scss';
+import { DesctopMenuList } from '../Menus';
+import s from 'styles/components/Layout/Footer/Footer.module.scss';
 
 export const Footer: FC = () => {
   return (

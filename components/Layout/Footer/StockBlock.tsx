@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button } from '@mui/material';
 import CardGiftcardOutlinedIcon from '@mui/icons-material/CardGiftcardOutlined';
 import { Width } from 'components';
-import s from 'styles/components/Layout/StockBlock.module.scss';
+import s from 'styles/components/Layout/Footer/StockBlock.module.scss';
 
 export interface StockBlockProps {
   title: string;
