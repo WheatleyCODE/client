@@ -3,20 +3,19 @@
 .mainBlock {
   display: flex;
   flex-direction: column;
-  width: 260px;
+  width: 230px;
 
   .logoText {
     display: flex;
     align-items: center;
     margin-left: 10px;
-    height: 45px;
+    height: 40px;
     font-size: 2.2rem;
   }
 
   .logoBlock {
     display: flex;
     align-items: center;
-    justify-content: center;
   }
 
   .button {
@@ -30,8 +29,12 @@
     font-weight: bold;
     letter-spacing: 0.5px;
     border: none;
-    height: 45px;
+    height: 40px;
     font-size: 1.3rem;
+
+    &:hover {
+      background-color: $colorDarkOrange;
+    }
 
     svg {
       font-size: 3rem;
