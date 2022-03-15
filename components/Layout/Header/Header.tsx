@@ -1,13 +1,16 @@
 import { FC } from 'react';
-import { Width } from 'components';
-import { Logo } from './Logo';
-import { Phone, Messengers, ButtonRC } from 'components/UI';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
+import { useRouter } from 'next/router';
+import { Width } from 'components';
+import { Logo } from './Logo';
+import { Phone, Messengers, ButtonRC } from 'components/UI';
 import s from 'styles/components/Layout/Header/Header.module.scss';
 
 export const Header: FC = () => {
+  const router = useRouter();
+
   return (
     <header className={s.mainBlock}>
       <Width>
@@ -29,10 +32,28 @@ export const Header: FC = () => {
               </ButtonRC>
             </div>
             <div className={s.buttonContainer}>
-              <ButtonRC color="white" style="rounded" className={s.button}>
+              <ButtonRC
+                onClick={() =>
+                  router.push({
+                    query: { search: true },
+                  })
+                }
+                color="white"
+                style="rounded"
+                className={s.button}
+              >
                 <h4>Найти код краски</h4> <SearchRoundedIcon />
               </ButtonRC>
-              <ButtonRC color="white" style="rounded" className={s.button}>
+              <ButtonRC
+                onClick={() =>
+                  router.push({
+                    query: { login: true },
+                  })
+                }
+                color="white"
+                style="rounded"
+                className={s.button}
+              >
                 <h4>Войти</h4> <LoginRoundedIcon />
               </ButtonRC>
             </div>

@@ -11,16 +11,17 @@ export interface DesctopMenuItemProps {
 
 export const DesctopMenuItem: FC<DesctopMenuItemProps> = ({ item, color }) => {
   const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
-  const { toggleMainMeduDesctop } = useActions();
+  const { toggleMainMenuDesctop } = useActions();
   const { push } = useRouter();
 
   const { Icon } = item;
 
   const onClickhandler = () => {
-    if (showMainMenuDesctop) toggleMainMeduDesctop();
+    if (showMainMenuDesctop) toggleMainMenuDesctop();
 
     push(item.path);
-  }
+  };
+
   return (
     <div onClick={onClickhandler} className={`${s.mainBlock} ${s[color]}`}>
       <a>

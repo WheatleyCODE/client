@@ -1,9 +1,12 @@
-import { useTypedSelector } from 'hooks';
+import { useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { useRouter } from 'next/router';
+import { useActions, useTypedSelector } from 'hooks';
 import { Footer } from './Footer';
 import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
-import { MiniCart } from '../Modals';
+import { LoginModal, MiniCart, Modal, SearchModal } from '../Modals';
 import s from 'styles/components/Layout/MainLayout.module.scss';
 
 export interface MainLayoutProps {
@@ -17,7 +20,35 @@ export interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = (props) => {
-  const { showMiniCart } = useTypedSelector((state) => state.modals);
+  const { showMiniCart, showLoginModal, showSearchModal } = useTypedSelector(
+    (state) => state.modals
+  );
+  const { toggleLoginModalDesctop, toggleSearchModalDesctop } = useActions();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.login === 'true') {
+      toggleLoginModalDesctop();
+    }
+
+    if (router.query.search === 'true') {
+      toggleSearchModalDesctop();
+    }
+  }, [router.query]);
+
+  const onCloseLoginModal = () => {
+    router.push({
+      query: {},
+    });
+    toggleLoginModalDesctop();
+  };
+
+  const onCloseSearchModal = () => {
+    router.push({
+      query: {},
+    });
+    toggleSearchModalDesctop();
+  };
 
   const {
     children,
@@ -41,6 +72,30 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
 
       {showFooter && <Footer />}
       <MiniCart show={showMiniCart} />
+
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={showLoginModal}
+        timeout={200}
+        classNames="showModal"
+      >
+        <Modal onClose={() => onCloseLoginModal()}>
+          <LoginModal />
+        </Modal>
+      </CSSTransition>
+
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={showSearchModal}
+        timeout={200}
+        classNames="showModal"
+      >
+        <Modal onClose={() => onCloseSearchModal()}>
+          <SearchModal />
+        </Modal>
+      </CSSTransition>
     </>
   );
 };

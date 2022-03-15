@@ -13,11 +13,11 @@ export interface LogoProps {
   className?: string;
 }
 export const Logo: FC<LogoProps> = () => {
-  const { toggleMainMeduDesctop } = useActions();
+  const { toggleMainMenuDesctop } = useActions();
   const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
 
   const onClickHandler = () => {
-    toggleMainMeduDesctop();
+    toggleMainMenuDesctop();
   };
 
   return (

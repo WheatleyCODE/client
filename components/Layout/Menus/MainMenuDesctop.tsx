@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Email, Messengers, Phone } from 'components/UI';
 import { Width } from 'components';
 import { useActions } from 'hooks';
@@ -7,19 +7,30 @@ import { DesctopMenuList } from './DesctopMenuList';
 import s from 'styles/components/Layout/Menus/MainMenuDesctop.module.scss';
 
 export const MainMenuDesctop: FC = () => {
-  const { toggleMainMeduDesctop } = useActions();
+  const { toggleMainMenuDesctop } = useActions();
+  const [className, setClassName] = useState('');
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.width = '100%';
 
+    const { platform } = window.navigator;
+
+    if (platform === 'Win32') {
+      document.body.style.paddingRight = '17px';
+      setClassName(s.padding);
+    }
+
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '0px';
+      setClassName('');
     };
   }, []);
 
   return (
-    <div onClick={toggleMainMeduDesctop} className={s.back}>
-      <div onClick={(e) => e.stopPropagation()} className={s.mainBlock}>
+    <div onClick={toggleMainMenuDesctop} className={s.back}>
+      <div onClick={(e) => e.stopPropagation()} className={`${s.mainBlock} ${className}`}>
         <Width>
           <div className={s.line} />
         </Width>
