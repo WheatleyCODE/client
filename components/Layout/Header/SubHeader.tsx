@@ -5,11 +5,13 @@ import { CSSTransition } from 'react-transition-group';
 import { Button } from '@mui/material';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
+import { useActions } from 'hooks';
 import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
   const [isActive, setIsActive] = useState(false);
+  const { toggleMiniCart } = useActions();
 
   useEffect(() => {
     const element = document.querySelector(`.${s.mainBlock}`);
@@ -58,7 +60,12 @@ export const SubHeader: FC = () => {
             </ul>
           </nav>
           <div className={s.cart}>
-            <Button className={s.button} size="small" variant="outlined">
+            <Button
+              onClick={() => toggleMiniCart()}
+              className={s.button}
+              size="small"
+              variant="outlined"
+            >
               <div className={s.buttonText}>
                 <div className={s.content}>
                   <h4>Корзина</h4>

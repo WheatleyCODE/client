@@ -85,14 +85,15 @@
       }
 
       h4 {
-        border-right: 1px solid $colorWhite;
-        padding-right: 10px;
+        padding-right: 30px;
       }
     }
 
     .icon {
       display: none;
-      font-size: 2.2rem;
+      position: absolute;
+      right: 30px;
+      font-size: 2.1rem;
       margin-left: 5px;
     }
   }

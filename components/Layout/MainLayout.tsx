@@ -1,7 +1,9 @@
+import { useTypedSelector } from 'hooks';
 import { Footer } from './Footer';
 import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
+import { MiniCart } from './MiniCart';
 import s from 'styles/components/Layout/MainLayout.module.scss';
 
 export interface MainLayoutProps {
@@ -15,6 +17,8 @@ export interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = (props) => {
+  const { showMiniCart } = useTypedSelector((state) => state.modals);
+
   const {
     children,
     keywords,
@@ -36,6 +40,7 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
       <main className={s.main}>{children}</main>
 
       {showFooter && <Footer />}
+      <MiniCart show={showMiniCart} />
     </>
   );
 };
