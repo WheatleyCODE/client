@@ -57,3 +57,11 @@
 .showMiniLogo-exit-active {
   animation: showMiniLogoMenu ease-in 0.2s forwards reverse;
 }
+
+.showModal-enter-active {
+  animation: defaultShow ease-in 0.2s forwards;
+}
+
+.showModal-exit-active {
+  animation: defaultShow ease-in 0.2s forwards reverse;
+}

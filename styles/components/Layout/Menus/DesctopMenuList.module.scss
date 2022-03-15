@@ -1,14 +1,16 @@
 @import 'styles/variables.scss';
 
 .mainBlock {
+  position: relative;
+
   .title {
-    padding-bottom: 5px;
-    font-size: 1.25rem;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
   }
 }
 
 .mainBlock.black {
-  color: $colorBlack;
+  color: $colorOrange;
 }
 
 .mainBlock.white {

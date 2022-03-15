@@ -1,0 +1,27 @@
+@import 'styles/variables.scss';
+
+.mainBlock {
+  position: relative;
+  width: 500px;
+  border-radius: 10px;
+  height: 500px;
+  background-color: $colorWhite;
+
+  .closeButton {
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    color: $colorWhite;
+    cursor: pointer;
+    transition: all 0.5s;
+    transform: rotate(0deg);
+
+    svg {
+      font-size: 3rem;
+    }
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+}

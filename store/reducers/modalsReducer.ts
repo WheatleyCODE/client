@@ -2,6 +2,7 @@ import { ModalsState, ModalsActionTypes, ModalsAction } from '@t';
 
 const initialState: ModalsState = {
   showMiniCart: false,
+  showMainMenuDesctop: false,
 };
 
 export const modalsReducer = (state = initialState, action: ModalsAction): ModalsState => {
@@ -10,6 +11,12 @@ export const modalsReducer = (state = initialState, action: ModalsAction): Modal
       return {
         ...state,
         showMiniCart: !state.showMiniCart,
+      };
+
+    case ModalsActionTypes.TOGGLE_MAIN_MENU_DESCTOP:
+      return {
+        ...state,
+        showMainMenuDesctop: !state.showMainMenuDesctop,
       };
 
     default:

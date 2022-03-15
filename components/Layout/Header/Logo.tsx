@@ -1,16 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Button } from '@mui/material';
-import logo from 'public/logo.png';
+import { CSSTransition } from 'react-transition-group';
 import { pathRoutes } from 'types';
+import { useActions, useTypedSelector } from 'hooks';
+import logo from 'public/logo.png';
+import { MainMenuDesctop } from '../Menus';
 import s from 'styles/components/Layout/Header/Logo.module.scss';
 
 export interface LogoProps {
   className?: string;
 }
 export const Logo: FC<LogoProps> = () => {
-  const [show, setShow] = useState(false);
+  const { toggleMainMeduDesctop } = useActions();
+  const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
+
+  const onClickHandler = () => {
+    toggleMainMeduDesctop();
+  };
 
   return (
     <div className={s.mainBlock}>
@@ -23,17 +31,12 @@ export const Logo: FC<LogoProps> = () => {
         </Link>
       </div>
       <div className={s.menuBlock}>
-        <Button
-          onClick={() => {
-            setShow((p) => !p);
-          }}
-          className={s.button}
-          size="small"
-          variant="outlined"
-        >
+        <Button onClick={onClickHandler} className={s.button} size="small" variant="outlined">
           <div className={s.buttonText}>
             <h4>Меню</h4>
-            <div className={`${s.hamburgerBlock} ${s.hamburger} ${show && s.active}`}>
+            <div
+              className={`${s.hamburgerBlock} ${s.hamburger} ${showMainMenuDesctop && s.active}`}
+            >
               <span className={`${s.bar} ${s.barOne}`} />
               <span className={`${s.bar} ${s.barTwo}`} />
               <span className={`${s.bar} ${s.barThree}`} />
@@ -42,6 +45,15 @@ export const Logo: FC<LogoProps> = () => {
           </div>
         </Button>
       </div>
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={showMainMenuDesctop}
+        timeout={200}
+        classNames="showModal"
+      >
+        <MainMenuDesctop />
+      </CSSTransition>
     </div>
   );
 };

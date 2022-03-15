@@ -16,12 +16,13 @@ export const Header: FC = () => {
           <div className={s.logoBlock}>
             <Logo />
           </div>
-          <div className={s.socialsBlock}>
+          {/* // ! Переделать дизайн */}
+          {/* <div className={s.socialsBlock}>
             <Phone className={s.phone} />
             <div className={s.messengers}>
               <Messengers className={s.messanger} height="38" width="38" />
             </div>
-          </div>
+          </div> */}
           <div className={s.buttonsBlock}>
             <div className={s.buttonContainer}>
               <Button className={s.button} size="small" variant="outlined">

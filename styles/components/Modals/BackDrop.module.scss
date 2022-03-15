@@ -1,0 +1,12 @@
+@import 'styles/mixins.scss';
+
+.mainBlock {
+  @include flex-center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  width: 100vw;
+  height: Calc(100vh + 40px);
+  padding-bottom: 40px;
+  z-index: 20;
+}

@@ -1,0 +1,162 @@
+@import 'styles/variables.scss';
+@import 'styles/mixins.scss';
+@import 'styles/animations.scss';
+
+.back {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: calc(100vh - 170px);
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  top: 170px;
+  width: 100%;
+  z-index: 30;
+}
+
+.mainBlock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $colorWhite;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+.links {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  height: 20px;
+  border-bottom: 1px solid $colorLightGrey;
+  width: 100%;
+}
+
+.phone {
+  display: block;
+  padding: 7px 0;
+  color: $colorBlack;
+  font-size: 1.5rem;
+}
+
+.email {
+  color: $colorBlack;
+  font-size: 1.2rem;
+}
+
+.messanger {
+  &:hover {
+    animation: hoverMessengers 0.2s ease-in;
+  }
+}
+
+.copy {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $colorGrey;
+  padding-top: 20px;
+}
+
+.copyLinks {
+  display: flex;
+  align-items: center;
+
+  .link {
+    color: $colorBlack;
+    font-size: 1.1rem;
+    padding-right: 20px;
+    transition: color 0.1s;
+  }
+
+  .link:first-child {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+
+  .link:hover {
+    color: $colorWhite;
+  }
+}
+
+.messengers {
+  display: flex;
+  justify-content: flex-end;
+
+  .messengerBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-bottom: 20px;
+  }
+}
+
+.socials {
+  .socialLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.1s;
+    border-radius: 5px;
+    margin-left: 10px;
+
+    svg {
+      color: $colorWhite;
+      font-size: 1.9rem;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .links {
+    display: block;
+  }
+
+  .messengers {
+    justify-content: flex-start;
+
+    .messengerBlock {
+      align-items: flex-start;
+    }
+
+    .messanger {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+  }
+
+  .copy {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .socials {
+      padding-bottom: 25px;
+    }
+
+    .socialLink {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .copyLinks {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .link {
+      padding-bottom: 10px;
+    }
+  }
+}

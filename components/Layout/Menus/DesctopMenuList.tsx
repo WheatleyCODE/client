@@ -15,7 +15,7 @@ export const DesctopMenuList: FC<DesctopMenuListProps> = ({ title, color, items 
       <h3 className={s.title}>{title}</h3>
       <div>
         {items.map((item) => (
-          <DesctopMenuItem key={item.id} item={item} />
+          <DesctopMenuItem color={color} key={item.id} item={item} />
         ))}
       </div>
     </div>

@@ -1,7 +1,7 @@
-import { useActions } from 'hooks';
 import { SwipeableDrawer } from '@mui/material';
 import { FC } from 'react';
-import s from 'styles/components/Layout/MiniCart.module.scss';
+import { useActions } from 'hooks';
+import s from 'styles/components/Modals/MiniCart.module.scss';
 
 export interface MiniCartProps {
   show: boolean;

@@ -3,7 +3,7 @@ import { Footer } from './Footer';
 import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
-import { MiniCart } from './MiniCart';
+import { MiniCart } from '../Modals';
 import s from 'styles/components/Layout/MainLayout.module.scss';
 
 export interface MainLayoutProps {
