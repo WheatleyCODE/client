@@ -2,9 +2,9 @@ import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { subHeaderMenu } from 'consts';
 import { CSSTransition } from 'react-transition-group';
-import { Button } from '@mui/material';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
+import { ButtonRC } from 'components/UI';
 import { useActions } from 'hooks';
 import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
@@ -50,7 +50,7 @@ export const SubHeader: FC = () => {
               <Image className={s.logoImg} height={35} width={35} src={logo} alt={'logo'} />
             </div>
           </CSSTransition>
-          <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.dong}`}>
+          <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.close}`}>
             <ul className={s.ul}>
               {subHeaderMenu.map((itm) => (
                 <li key={itm.path}>
@@ -60,11 +60,11 @@ export const SubHeader: FC = () => {
             </ul>
           </nav>
           <div className={s.cart}>
-            <Button
+            <ButtonRC
               onClick={() => toggleMiniCart()}
               className={s.button}
-              size="small"
-              variant="outlined"
+              color="orange"
+              style="rounded"
             >
               <div className={s.buttonText}>
                 <div className={s.content}>
@@ -72,7 +72,7 @@ export const SubHeader: FC = () => {
                   <ArrowRightAltRoundedIcon className={s.icon} />
                 </div>
               </div>
-            </Button>
+            </ButtonRC>
           </div>
         </div>
       </Width>

@@ -18,29 +18,9 @@
   }
 }
 
-@keyframes showMiniLogo {
-  0% {
-    margin-left: 0px;
-  }
-
-  100% {
-    margin-left: 48px;
-  }
-}
-
-@keyframes backMiniLogo {
-  0% {
-    margin-left: 48px;
-  }
-
-  100% {
-    margin-left: 0px;
-  }
-}
-
 @keyframes showMiniLogoMenu {
   0% {
-    transform: translateX(-53px);
+    transform: translateX(-45px);
     opacity: 0;
   }
 
@@ -51,11 +31,11 @@
 }
 
 .showMiniLogo-enter-active {
-  animation: showMiniLogoMenu ease-in 0.2s forwards;
+  animation: showMiniLogoMenu 0.2s forwards;
 }
 
 .showMiniLogo-exit-active {
-  animation: showMiniLogoMenu ease-in 0.2s forwards reverse;
+  animation: showMiniLogoMenu 0.16s ease-in forwards reverse;
 }
 
 .showModal-enter-active {

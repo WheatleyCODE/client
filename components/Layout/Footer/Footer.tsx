@@ -31,7 +31,9 @@ export const Footer: FC = () => {
           <div className={s.copyLinks}>
             {copyMenu.map(({ id, name, path }) => (
               <div key={id} className={s.link}>
-                <Link href={path}>{name}</Link>
+                <Link passHref href={path}>
+                  {name}
+                </Link>
               </div>
             ))}
           </div>

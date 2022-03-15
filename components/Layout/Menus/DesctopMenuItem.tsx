@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTypedSelector, useActions } from 'hooks';
 import { MenuItem } from 'types';
 import s from 'styles/components/Layout/Menus/DesctopMenuItem.module.scss';
 
@@ -9,15 +10,25 @@ export interface DesctopMenuItemProps {
 }
 
 export const DesctopMenuItem: FC<DesctopMenuItemProps> = ({ item, color }) => {
+  const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
+  const { toggleMainMeduDesctop } = useActions();
+  const { push } = useRouter();
+
   const { Icon } = item;
+
+  const onClickhandler = () => {
+    if (showMainMenuDesctop) toggleMainMeduDesctop();
+
+    push(item.path);
+  }
   return (
-    <div className={`${s.mainBlock} ${s[color]}`}>
-      <Link passHref href={item.path}>
+    <div onClick={onClickhandler} className={`${s.mainBlock} ${s[color]}`}>
+      <a>
         <div className={Icon ? `${s.link} ${s.icon}` : s.links}>
           {Icon && <Icon />}
           {item.name}
         </div>
-      </Link>
+      </a>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Button } from '@mui/material';
 import CardGiftcardOutlinedIcon from '@mui/icons-material/CardGiftcardOutlined';
 import { Width } from 'components';
+import { ButtonRC } from 'components/UI';
 import s from 'styles/components/Layout/Footer/StockBlock.module.scss';
 
 export interface StockBlockProps {
@@ -18,9 +18,9 @@ export const StockBlock: FC<StockBlockProps> = ({ title }) => {
             <h2 className={s.title}>{title}</h2>
           </div>
           <div className={s.buttonBlock}>
-            <Button className={s.button} size="medium" variant="outlined">
+            <ButtonRC color="white" style="rounded" className={s.button}>
               <h4>Подробнее</h4>
-            </Button>
+            </ButtonRC>
           </div>
         </div>
       </Width>

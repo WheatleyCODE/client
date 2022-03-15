@@ -1,0 +1,31 @@
+@import 'styles/variables.scss';
+
+.buttonRC {
+  text-transform: none !important;
+}
+
+.buttonRC.rounded {
+  border-radius: 50px;
+}
+
+.buttonRC.white {
+  background-color: $colorWhite;
+  border: 1px solid $colorOrange;
+  color: $colorOrange;
+
+  &:hover {
+    background-color: $colorLightOrange;
+    border: 1px solid $colorOrange;
+  }
+}
+
+.buttonRC.orange {
+  background-color: $colorOrange;
+  border: 1px solid $colorOrange;
+  color: $colorWhite;
+
+  &:hover {
+    background-color: $colorDarkOrange;
+    border: 1px solid $colorOrange;
+  }
+}

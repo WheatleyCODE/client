@@ -46,25 +46,21 @@
 
 .menu {
   margin-left: 0;
+  transition: all 0.2s;
 }
 
 .menu.show {
-  animation: showMiniLogo 0.2s ease-in forwards;
+  padding-left: 50px;
 }
 
-.dong {
-  animation: backMiniLogo 0.2s ease-in forwards;
+.close {
+  padding-left: 0px;
 }
 
 .cart {
   .button {
-    background-color: $colorOrange;
-    text-transform: none;
     font-size: 1.1rem;
-    border-radius: 50px;
     height: 36px;
-    border: none;
-    color: $colorWhite;
     width: 180px;
 
     .content {
@@ -77,8 +73,6 @@
     }
 
     &:hover {
-      background-color: $colorDarkOrange;
-
       .icon {
         display: inline-block;
         animation: defaultShow 0.2s ease-in forwards;

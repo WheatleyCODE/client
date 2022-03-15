@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { Width } from 'components';
 import { Logo } from './Logo';
-import { Phone, Messengers } from 'components/UI';
-import { Button } from '@mui/material';
+import { Phone, Messengers, ButtonRC } from 'components/UI';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
@@ -25,17 +24,17 @@ export const Header: FC = () => {
           </div> */}
           <div className={s.buttonsBlock}>
             <div className={s.buttonContainer}>
-              <Button className={s.button} size="small" variant="outlined">
+              <ButtonRC color="white" style="rounded" className={s.button}>
                 <h4>Как узнать код краски автомобиля?</h4> <DirectionsCarOutlinedIcon />
-              </Button>
+              </ButtonRC>
             </div>
             <div className={s.buttonContainer}>
-              <Button className={s.button} size="small" variant="outlined">
+              <ButtonRC color="white" style="rounded" className={s.button}>
                 <h4>Найти код краски</h4> <SearchRoundedIcon />
-              </Button>
-              <Button className={s.button} size="small" variant="outlined">
+              </ButtonRC>
+              <ButtonRC color="white" style="rounded" className={s.button}>
                 <h4>Войти</h4> <LoginRoundedIcon />
-              </Button>
+              </ButtonRC>
             </div>
           </div>
         </div>

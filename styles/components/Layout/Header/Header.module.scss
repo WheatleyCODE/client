@@ -40,19 +40,10 @@
 
 .buttonsBlock {
   .button {
-    border: 1px solid $colorOrange;
-    border-radius: 50px;
-    text-transform: none;
-    color: $colorBlack;
     height: 36px;
     font-size: 1.05rem;
     padding-right: 25px;
     padding-left: 25px;
-    color: $colorOrange;
-
-    &:hover {
-      background-color: $colorLightOrange;
-    }
 
     svg {
       margin-left: 5px;
