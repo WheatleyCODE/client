@@ -12,6 +12,7 @@ export const MiniCart: FC<MiniCartProps> = ({ show }) => {
 
   return (
     <SwipeableDrawer
+      disableBackdropTransition
       anchor={'right'}
       open={show}
       onClose={() => toggleMiniCart()}

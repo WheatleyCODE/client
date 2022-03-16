@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout title="Главная" description="Главная" keywords={['Главная']}>
       {loading && <h3 style={{ color: 'green' }}>Загрузка пользователей...</h3>}
-      <pre>{JSON.stringify(users, 0, 2)}</pre>
+      <pre style={{ overflow: 'hidden' }}>{JSON.stringify(users, 0, 2)}</pre>
     </MainLayout>
   );
 };

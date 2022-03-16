@@ -1,15 +1,17 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
 import { useRouter } from 'next/router';
 import { Width } from 'components';
 import { Logo } from './Logo';
-import { Phone, Messengers, ButtonRC } from 'components/UI';
+import { Phone, Messengers, ButtonRC, Hamburger } from 'components/UI';
 import s from 'styles/components/Layout/Header/Header.module.scss';
+import { IconButton } from '@mui/material';
 
 export const Header: FC = () => {
   const router = useRouter();
+  const [show, setShow] = useState(false);
 
   return (
     <header className={s.mainBlock}>
@@ -17,6 +19,9 @@ export const Header: FC = () => {
         <div className={s.header}>
           <div className={s.logoBlock}>
             <Logo />
+          </div>
+          <div className={s.logoBlockMobile}>
+            <Logo mobile />
           </div>
           {/* // ! Переделать дизайн */}
           {/* <div className={s.socialsBlock}>
@@ -57,6 +62,11 @@ export const Header: FC = () => {
                 <h4>Войти</h4> <LoginRoundedIcon />
               </ButtonRC>
             </div>
+          </div>
+          <div className={s.buttonContainerMobile}>
+            <IconButton className={s.button} onClick={() => setShow((p) => !p)} aria-label="menu">
+              <Hamburger size="large" show={show} />
+            </IconButton>
           </div>
         </div>
       </Width>

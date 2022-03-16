@@ -6,13 +6,14 @@ import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
 import logo from 'public/logo.png';
 import { MainMenuDesctop } from '../Menus';
-import { ButtonRC } from 'components/UI';
+import { ButtonRC, Hamburger } from 'components/UI';
 import s from 'styles/components/Layout/Header/Logo.module.scss';
 
 export interface LogoProps {
   className?: string;
+  mobile?: boolean;
 }
-export const Logo: FC<LogoProps> = () => {
+export const Logo: FC<LogoProps> = ({ className, mobile = false }) => {
   const { toggleMainMenuDesctop } = useActions();
   const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
 
@@ -31,19 +32,14 @@ export const Logo: FC<LogoProps> = () => {
         </Link>
       </div>
       <div className={s.menuBlock}>
-        <ButtonRC onClick={onClickHandler} style="rounded" color="orange" className={s.button}>
-          <div className={s.buttonText}>
-            <h4>Меню</h4>
-            <div
-              className={`${s.hamburgerBlock} ${s.hamburger} ${showMainMenuDesctop && s.active}`}
-            >
-              <span className={`${s.bar} ${s.barOne}`} />
-              <span className={`${s.bar} ${s.barTwo}`} />
-              <span className={`${s.bar} ${s.barThree}`} />
-              <span className={`${s.bar} ${s.barFore}`} />
+        {!mobile && (
+          <ButtonRC onClick={onClickHandler} style="rounded" color="orange" className={s.button}>
+            <div className={s.buttonText}>
+              <h4>Меню</h4>
+              <Hamburger className={s.white} show={showMainMenuDesctop} />
             </div>
-          </div>
-        </ButtonRC>
+          </ButtonRC>
+        )}
       </div>
       <CSSTransition
         mountOnEnter

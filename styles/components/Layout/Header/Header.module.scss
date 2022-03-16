@@ -16,6 +16,24 @@
 .logoBlock {
 }
 
+.logoBlockMobile {
+  display: none;
+}
+
+.buttonContainerMobile {
+  display: none;
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    color: $colorBlack;
+    margin-left: 0px;
+  }
+}
+
 .socialsBlock {
   .phone {
     display: flex;
@@ -69,5 +87,26 @@
     .button:last-child {
       margin-left: 15px;
     }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    padding-bottom: 5px;
+  }
+  .buttonsBlock {
+    display: none;
+  }
+
+  .logoBlock {
+    display: none;
+  }
+
+  .logoBlockMobile {
+    display: block;
+  }
+
+  .buttonContainerMobile {
+    display: flex;
   }
 }
