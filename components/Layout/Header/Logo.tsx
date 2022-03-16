@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
-import logo from 'public/logo.png';
+import logo from 'public/logo.jpeg';
 import { MainMenuDesctop } from '../Menus';
 import { ButtonRC, Hamburger } from 'components/UI';
 import s from 'styles/components/Layout/Header/Logo.module.scss';
@@ -25,21 +25,35 @@ export const Logo: FC<LogoProps> = ({ className, mobile = false }) => {
     <div className={s.mainBlock}>
       <div className={s.logoBlock}>
         <Link passHref href={pathRoutes.HOME}>
-          <Image className={s.logoImg} height={36} width={36} src={logo} alt={'logo'} />
-        </Link>
-        <Link passHref href={pathRoutes.HOME}>
-          <h2 className={s.logoText}>JETCOLOR</h2>
-        </Link>
-      </div>
-      <div className={s.menuBlock}>
-        {!mobile && (
-          <ButtonRC onClick={onClickHandler} style="rounded" color="orange" className={s.button}>
-            <div className={s.buttonText}>
-              <h4>Меню</h4>
-              <Hamburger className={s.white} show={showMainMenuDesctop} />
+          <div>
+            <div className={s.logoDesctop}>
+              <Image className={s.logoImg} height={100} width={80} src={logo} alt={'logo'} />
             </div>
-          </ButtonRC>
-        )}
+            <div className={s.logoMobile}>
+              <Image className={s.logoImg} height={40} width={35} src={logo} alt={'logo'} />
+            </div>
+          </div>
+        </Link>
+        <div className={s.container}>
+          <Link passHref href={pathRoutes.HOME}>
+            <h2 className={s.logoText}>JETCOLOR</h2>
+          </Link>
+          <div className={s.menuBlock}>
+            {!mobile && (
+              <ButtonRC
+                onClick={onClickHandler}
+                style="rounded"
+                color="orange"
+                className={s.button}
+              >
+                <div className={s.buttonText}>
+                  <h4>Меню</h4>
+                  <Hamburger className={s.white} show={showMainMenuDesctop} />
+                </div>
+              </ButtonRC>
+            )}
+          </div>
+        </div>
       </div>
       <CSSTransition
         mountOnEnter

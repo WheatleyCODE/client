@@ -6,7 +6,7 @@ import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
 import { ButtonRC } from 'components/UI';
 import { useActions } from 'hooks';
-import logo from 'public/logo.png';
+import logo from 'public/logo.jpeg';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
@@ -47,7 +47,7 @@ export const SubHeader: FC = () => {
             classNames="showMiniLogo"
           >
             <div className={s.miniLogo}>
-              <Image className={s.logoImg} height={35} width={35} src={logo} alt={'logo'} />
+              <Image className={s.logoImg} height={35} width={31} src={logo} alt={'logo'} />
             </div>
           </CSSTransition>
           <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.close}`}>

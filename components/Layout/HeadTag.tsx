@@ -11,7 +11,7 @@ export const HeadTag: FC<HeadTagProps> = ({ keywords, description, title }) => {
   return (
     <Head>
       <title>{title} | JETCOLOR</title>
-      <link rel="icon" href="/logo.png" />
+      <link rel="icon" href="/telegram.svg" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(' ')} />
     </Head>

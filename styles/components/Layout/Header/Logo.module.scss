@@ -3,14 +3,17 @@
 .mainBlock {
   display: flex;
   flex-direction: column;
-  width: 195px;
+
+  .logoMobile {
+    display: none;
+  }
 
   .logoText {
     display: flex;
     align-items: center;
-    margin-left: 5px;
     height: 36px;
-    font-size: 1.8rem;
+    text-align: center;
+    font-size: 2rem;
     cursor: pointer;
   }
 
@@ -18,6 +21,11 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+
+  .container {
+    margin-left: 13px;
+    width: 160px;
   }
 
   .button {
@@ -41,5 +49,25 @@
 
   .white {
     background-color: $colorWhite;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .mainBlock {
+    .logoMobile {
+      display: block;
+    }
+
+    .logoDesctop {
+      display: none;
+    }
+
+    .logoText {
+      font-size: 1.8rem;
+    }
+
+    .container {
+      margin-left: 10px;
+    }
   }
 }
