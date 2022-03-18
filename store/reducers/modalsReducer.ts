@@ -3,6 +3,7 @@ import { ModalsState, ModalsActionTypes, ModalsAction } from '@t';
 const initialState: ModalsState = {
   showMiniCart: false,
   showMainMenuDesctop: false,
+  showMainMenuMobile: false,
   showLoginModal: false,
   showSearchModal: false,
 };
@@ -19,6 +20,12 @@ export const modalsReducer = (state = initialState, action: ModalsAction): Modal
       return {
         ...state,
         showMainMenuDesctop: !state.showMainMenuDesctop,
+      };
+
+    case ModalsActionTypes.TOGGLE_MAIN_MENU_MOBILE:
+      return {
+        ...state,
+        showMainMenuMobile: !state.showMainMenuMobile,
       };
 
     case ModalsActionTypes.TOGGLE_LOGIN_MODAL:

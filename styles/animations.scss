@@ -30,6 +30,18 @@
   }
 }
 
+@keyframes showMobileMenu {
+  0% {
+    transform: translateY(600px);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .showMiniLogo-enter-active {
   animation: showMiniLogoMenu 0.2s forwards;
 }
@@ -40,8 +52,17 @@
 
 .showModal-enter-active {
   animation: defaultShow ease-in 0.2s forwards;
+  background-color: red;
 }
 
 .showModal-exit-active {
   animation: defaultShow ease-in 0.2s forwards reverse;
+}
+
+.showModalFast-enter-active {
+  animation: showMobileMenu ease-in 0.2s forwards;
+}
+
+.showModalFast-exit-active {
+  animation: showMobileMenu ease-in 0.2s forwards reverse;
 }

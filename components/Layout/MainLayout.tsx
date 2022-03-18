@@ -6,8 +6,9 @@ import { Footer } from './Footer';
 import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
-import { LoginModal, MiniCart, Modal, SearchModal } from '../Modals';
+import { LoginModal, MainMenuMobile, MiniCart, Modal, SearchModal } from '../Modals';
 import s from 'styles/components/Layout/MainLayout.module.scss';
+import { Portal } from '@mui/material';
 
 export interface MainLayoutProps {
   title: string;
@@ -20,7 +21,7 @@ export interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = (props) => {
-  const { showMiniCart, showLoginModal, showSearchModal } = useTypedSelector(
+  const { showMiniCart, showLoginModal, showSearchModal, showMainMenuMobile } = useTypedSelector(
     (state) => state.modals
   );
   const { toggleLoginModalDesctop, toggleSearchModalDesctop } = useActions();
@@ -73,29 +74,45 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
       {showFooter && <Footer />}
       <MiniCart show={showMiniCart} />
 
-      <CSSTransition
-        mountOnEnter
-        unmountOnExit
-        in={showLoginModal}
-        timeout={200}
-        classNames="showModal"
-      >
-        <Modal onClose={() => onCloseLoginModal()}>
-          <LoginModal />
-        </Modal>
-      </CSSTransition>
+      <Portal>
+        <CSSTransition
+          mountOnEnter
+          unmountOnExit
+          in={showLoginModal}
+          timeout={200}
+          classNames="showModal"
+        >
+          <Modal onClose={() => onCloseLoginModal()}>
+            <LoginModal />
+          </Modal>
+        </CSSTransition>
+      </Portal>
 
-      <CSSTransition
-        mountOnEnter
-        unmountOnExit
-        in={showSearchModal}
-        timeout={200}
-        classNames="showModal"
-      >
-        <Modal onClose={() => onCloseSearchModal()}>
-          <SearchModal />
-        </Modal>
-      </CSSTransition>
+      <Portal>
+        <CSSTransition
+          mountOnEnter
+          unmountOnExit
+          in={showSearchModal}
+          timeout={200}
+          classNames="showModal"
+        >
+          <Modal onClose={() => onCloseSearchModal()}>
+            <SearchModal />
+          </Modal>
+        </CSSTransition>
+      </Portal>
+
+      <Portal>
+        <CSSTransition
+          mountOnEnter
+          unmountOnExit
+          in={showMainMenuMobile}
+          timeout={200}
+          classNames="showModalFast"
+        >
+          <MainMenuMobile />
+        </CSSTransition>
+      </Portal>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
-import logo from 'public/logo.jpeg';
+import logo from 'public/logo.png';
 import { MainMenuDesctop } from '../Menus';
 import { ButtonRC, Hamburger } from 'components/UI';
 import s from 'styles/components/Layout/Header/Logo.module.scss';

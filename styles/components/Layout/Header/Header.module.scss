@@ -3,7 +3,22 @@
 @import 'styles/animations.scss';
 
 .mainBlock {
+  transition: all 0.1s;
   @include flex-center;
+}
+
+.mainBlock.black {
+  background-color: $colorBlack;
+
+  color: $colorWhite;
+
+  .hamburger {
+    background-color: $colorWhite;
+  }
+
+  .header {
+    border-bottom: 1px solid grey;
+  }
 }
 
 .header {
@@ -93,6 +108,7 @@
 @media screen and (max-width: 950px) {
   .header {
     padding-bottom: 5px;
+    padding-top: 5px;
   }
   .buttonsBlock {
     display: none;

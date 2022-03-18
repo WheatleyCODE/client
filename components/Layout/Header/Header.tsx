@@ -2,19 +2,21 @@ import { FC, useState } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
+import { Logo } from './Logo';
 import { useRouter } from 'next/router';
 import { Width } from 'components';
-import { Logo } from './Logo';
+import { useActions, useTypedSelector } from 'hooks';
 import { Phone, Messengers, ButtonRC, Hamburger } from 'components/UI';
-import s from 'styles/components/Layout/Header/Header.module.scss';
 import { IconButton } from '@mui/material';
+import s from 'styles/components/Layout/Header/Header.module.scss';
 
 export const Header: FC = () => {
   const router = useRouter();
-  const [show, setShow] = useState(false);
+  const { toggleMainMenuMobile } = useActions();
+  const { showMainMenuMobile } = useTypedSelector((state) => state.modals);
 
   return (
-    <header className={s.mainBlock}>
+    <header className={showMainMenuMobile ? `${s.mainBlock} ${s.black}` : s.mainBlock}>
       <Width>
         <div className={s.header}>
           <div className={s.logoBlock}>
@@ -64,8 +66,12 @@ export const Header: FC = () => {
             </div>
           </div>
           <div className={s.buttonContainerMobile}>
-            <IconButton className={s.button} onClick={() => setShow((p) => !p)} aria-label="menu">
-              <Hamburger size="large" show={show} />
+            <IconButton
+              className={s.button}
+              onClick={() => toggleMainMenuMobile()}
+              aria-label="menu"
+            >
+              <Hamburger className={s.hamburger} size="large" show={showMainMenuMobile} />
             </IconButton>
           </div>
         </div>

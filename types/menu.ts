@@ -7,11 +7,15 @@ export enum pathRoutes {
   CONTACTS = '/contacts',
   REVIEWS = '/reviews',
   COLORIST = '/colorist',
+  CATALOGS = '/catalogs',
   NEWS = '/news',
   INFO = '/info',
   FAQ = '/faq',
   CAR_COLOR = '/car_color',
   ARTICLES = '/articles',
+  USER_ACCOUNT = '/user',
+  CART = '/cart',
+  LOGIN = '/login',
 }
 
 export interface MenuItem {

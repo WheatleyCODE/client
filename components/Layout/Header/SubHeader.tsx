@@ -6,7 +6,7 @@ import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
 import { ButtonRC } from 'components/UI';
 import { useActions } from 'hooks';
-import logo from 'public/logo.jpeg';
+import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
 export const SubHeader: FC = () => {
