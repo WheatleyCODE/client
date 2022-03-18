@@ -3,12 +3,11 @@
 @import 'styles/animations.scss';
 
 .back {
-  background-color: rgba(0, 0, 0, 0.6);
   height: calc(100vh - 170px);
   overflow: auto;
   position: absolute;
   left: 0;
-  top: 180px;
+  top: 170px;
   width: 100%;
   z-index: 30;
 }

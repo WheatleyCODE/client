@@ -123,6 +123,10 @@
         margin-right: 5px;
         height: 30px;
 
+        &:hover {
+          background-color: $colorLightOrange;
+        }
+
         h4 {
           display: flex;
           align-items: center;
