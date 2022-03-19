@@ -7,8 +7,8 @@ import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
 import { LoginModal, MainMenuMobile, MiniCart, Modal, SearchModal } from '../Modals';
-import s from 'styles/components/Layout/MainLayout.module.scss';
 import { Portal } from '@mui/material';
+import s from 'styles/components/Layout/MainLayout.module.scss';
 
 export interface MainLayoutProps {
   title: string;
@@ -102,17 +102,7 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
         </CSSTransition>
       </Portal>
 
-      <Portal>
-        <CSSTransition
-          mountOnEnter
-          unmountOnExit
-          in={showMainMenuMobile}
-          timeout={200}
-          classNames="showModalFast"
-        >
-          <MainMenuMobile />
-        </CSSTransition>
-      </Portal>
+      <MainMenuMobile show={showMainMenuMobile} />
     </>
   );
 };

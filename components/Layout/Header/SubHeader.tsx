@@ -14,13 +14,17 @@ interface ObjectWidth {
   [key: number]: number;
 }
 
+const LOGO_WIDTH = 55;
+const MARGIN_RIGHT = 5;
+const DEFAULT_STEP = 0;
+
 export const SubHeader: FC = () => {
   const [objectWidth, setObjectWidth] = useState<ObjectWidth>({});
   const [isActive, setIsActive] = useState(false);
 
-  const [currentStep, setCurrentStep] = useState(0);
-  const [skipSteps, setSkipSteps] = useState(0);
-  const prevValue = useRef<null | number>(null);
+  const [currentStep, setCurrentStep] = useState(DEFAULT_STEP);
+  const [skipSteps, setSkipSteps] = useState(DEFAULT_STEP);
+  const prevStep = useRef(DEFAULT_STEP);
 
   const { toggleMiniCart, toggleMainMenuDesctop } = useActions();
   const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
@@ -28,11 +32,8 @@ export const SubHeader: FC = () => {
   const mainDivElement = useRef<HTMLDivElement>(null);
   const ulElement = useRef<HTMLUListElement>(null);
 
-  const LOGO_WIDTH = 55;
-  const MARGIN_RIGHT = 5;
-
   useEffect(() => {
-    prevValue.current = currentStep;
+    prevStep.current = currentStep;
   }, [currentStep]);
 
   useEffect(() => {
@@ -88,24 +89,29 @@ export const SubHeader: FC = () => {
     mainDivElement.current.scrollTo(width + LOGO_WIDTH, 0);
   };
 
+  const checkStep = (currStep: number) => {
+    const preStep = prevStep.current;
+
+    if (preStep < currStep && currStep - preStep > 1) {
+      setSkipSteps(currStep - preStep - 1);
+    } else if (preStep > currStep && preStep - currStep > 1) {
+      setSkipSteps(preStep - currStep - 1);
+    }
+  };
+
   const onClickHandlerNavLink = (i: number) => {
     if (showMainMenuDesctop) toggleMainMenuDesctop();
 
-    if (prevValue.current === null) return;
-
-    const prevStep = prevValue.current;
-
-    if (prevStep < i && i - prevStep > 1) {
-      setSkipSteps(i - prevStep - 1);
-    } else if (prevStep > i && prevStep - i > 1) {
-      setSkipSteps(prevStep - i - 1);
-    }
-
+    checkStep(i);
     setCurrentStep(i);
   };
 
   const onClickHandlerMiniLogo = () => {
     if (showMainMenuDesctop) toggleMainMenuDesctop();
+
+    checkStep(DEFAULT_STEP);
+    setCurrentStep(DEFAULT_STEP);
+
     animateScroll.scrollToTop();
   };
 

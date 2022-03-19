@@ -9,8 +9,9 @@
 
 .mainBlock.black {
   background-color: $colorBlack;
-
   color: $colorWhite;
+  z-index: 10000;
+  position: relative;
 
   .hamburger {
     background-color: $colorWhite;
@@ -22,8 +23,8 @@
 }
 
 .header {
-  padding-top: 15px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -73,6 +74,10 @@
 }
 
 .buttonsBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .button {
     height: 36px;
     font-size: 1.05rem;
@@ -110,6 +115,7 @@
   .header {
     padding-bottom: 5px;
     padding-top: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
   }
   .buttonsBlock {
     display: none;
