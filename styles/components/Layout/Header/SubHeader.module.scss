@@ -3,12 +3,20 @@
 @import 'styles/animations.scss';
 
 .mainBlock {
+  transition: all 0.2s;
   @include flex-center;
   position: sticky;
   background-color: $colorWhite;
   top: -2px;
   background-color: $colorWhite;
   z-index: 20;
+  scroll-behavior: smooth;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .mainBlock[stuck] {
@@ -16,7 +24,7 @@
 }
 
 .subHeader {
-  height: 55px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,14 +37,19 @@
     }
 
     li {
-      transition: all 0.15s;
-      cursor: pointer;
-      padding: 2px 7px;
+      // padding: 2px 7px;
       font-size: 0.95rem;
+    }
 
-      &:hover {
-        color: $colorOrange;
-      }
+    .active {
+      color: $colorOrange;
+    }
+
+    .navLink {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      transition: all 0.1s;
     }
   }
 
@@ -44,6 +57,7 @@
     position: absolute;
     @include flex-center;
     height: 100%;
+    cursor: pointer;
   }
 }
 
@@ -53,7 +67,7 @@
 }
 
 .menu.show {
-  padding-left: 45px;
+  padding-left: 40px;
 }
 
 .close {
@@ -108,24 +122,22 @@
   .subHeader {
     .ul {
       display: flex;
-      width: 705px;
+      width: 720px;
 
       li:first-child {
         padding: 10px 10px;
+        padding: 0;
       }
 
       li {
         display: flex;
         font-size: 0.9rem;
-        background-color: rgb(245, 245, 245);
+        background-color: rgb(240, 240, 240);
         border-radius: 20px;
-        padding: 10px 10px;
+        padding: 0;
         margin-right: 5px;
-        height: 30px;
-
-        &:hover {
-          background-color: $colorLightOrange;
-        }
+        height: 32px;
+        color: rgb(50, 50, 50);
 
         h4 {
           display: flex;
@@ -133,5 +145,17 @@
         }
       }
     }
+  }
+
+  .navLink {
+    height: 100%;
+    display: flex;
+    padding: 0 10px;
+  }
+
+  .active {
+    background-color: $colorLightOrange;
+    color: $colorOrange;
+    border-radius: 40px;
   }
 }

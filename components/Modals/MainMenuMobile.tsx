@@ -77,7 +77,7 @@ export const MainMenuMobile: FC = () => {
                             </div>
                           </AccordionSummary>
                           <AccordionDetails className={s.details}>
-                            {items?.map(({ name, Icon, path }, ind: any) => (
+                            {items?.map(({ name, Icon, path }, ind) => (
                               <div
                                 className={s.item}
                                 aria-hidden

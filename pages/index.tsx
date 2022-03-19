@@ -2,9 +2,11 @@ import type { NextPage } from 'next';
 import { wrapper } from '@store';
 import { useActions, useTypedSelector } from 'hooks';
 import { useEffect } from 'react';
+import { Element } from 'react-scroll';
 import { NextThunckDispatch } from '@store/reducers';
 import { fetchUsersAC } from '@store/actions-creators/user';
 import { MainLayout } from 'components';
+import { subHeaderMenu } from 'consts';
 import s from 'styles/pages/Home.module.scss';
 
 // Redux tests
@@ -23,7 +25,12 @@ const Home: NextPage = () => {
   return (
     <MainLayout title="Главная" description="Главная" keywords={['Главная']}>
       {loading && <h3 style={{ color: 'green' }}>Загрузка пользователей...</h3>}
-      <pre style={{ overflow: 'hidden' }}>{JSON.stringify(users, 0, 2)}</pre>
+      {subHeaderMenu.map((item) => (
+        <Element name={item.name} key={item.name}>
+          <h4>{item.name}</h4>
+          <pre style={{ overflow: 'hidden' }}>{JSON.stringify(users, 0, 2)}</pre>
+        </Element>
+      ))}
     </MainLayout>
   );
 };

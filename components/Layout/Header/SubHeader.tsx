@@ -1,42 +1,126 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { subHeaderMenu } from 'consts';
 import { CSSTransition } from 'react-transition-group';
+import { Link, animateScroll } from 'react-scroll';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { Width } from 'components';
 import { ButtonRC } from 'components/UI';
-import { useActions } from 'hooks';
+import { useActions, useTypedSelector } from 'hooks';
+import { subHeaderMenu } from 'consts';
 import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
+interface ObjectWidth {
+  [key: number]: number;
+}
+
 export const SubHeader: FC = () => {
+  const [objectWidth, setObjectWidth] = useState<ObjectWidth>({});
   const [isActive, setIsActive] = useState(false);
-  const { toggleMiniCart } = useActions();
+
+  const [currentStep, setCurrentStep] = useState(0);
+  const [skipSteps, setSkipSteps] = useState(0);
+  const prevValue = useRef<null | number>(null);
+
+  const { toggleMiniCart, toggleMainMenuDesctop } = useActions();
+  const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
+
+  const mainDivElement = useRef<HTMLDivElement>(null);
+  const ulElement = useRef<HTMLUListElement>(null);
+
+  const LOGO_WIDTH = 55;
+  const MARGIN_RIGHT = 5;
+
+  useEffect(() => {
+    prevValue.current = currentStep;
+  }, [currentStep]);
 
   useEffect(() => {
     const element = document.querySelector(`.${s.mainBlock}`);
 
-    if (element !== null) {
-      const observer = new IntersectionObserver(
-        ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
-        { threshold: [1] }
-      );
+    if (!element) return;
 
-      const muObserver = new MutationObserver((mutations) => {
-        mutations.forEach(() => {
-          setIsActive((p) => !p);
-        });
+    const observer = new IntersectionObserver(
+      ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
+      { threshold: [1] }
+    );
+
+    const muObserver = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        setIsActive((p) => !p);
       });
+    });
 
-      const config = { attributes: true, childList: false, characterData: false };
+    const config = { attributes: true, childList: false, characterData: false };
 
-      observer.observe(element);
-      muObserver.observe(element, config);
-    }
+    observer.observe(element);
+    muObserver.observe(element, config);
   }, []);
 
+  useEffect(() => {
+    const newObjectWidth: ObjectWidth = {};
+
+    if (!ulElement.current) return;
+
+    ulElement.current.childNodes.forEach((el, i) => {
+      const elem = el as Element;
+
+      newObjectWidth[i] = elem.clientWidth;
+    });
+
+    setObjectWidth({ ...newObjectWidth });
+  }, []);
+
+  const scroll = (i: number) => {
+    if (!mainDivElement.current) return;
+
+    let width = 0;
+
+    if (i === 0) {
+      mainDivElement.current.scrollTo(0, 0);
+      return;
+    }
+
+    for (let x = 0; x !== i; x++) {
+      width += objectWidth[x] + MARGIN_RIGHT;
+    }
+
+    mainDivElement.current.scrollTo(width + LOGO_WIDTH, 0);
+  };
+
+  const onClickHandlerNavLink = (i: number) => {
+    if (showMainMenuDesctop) toggleMainMenuDesctop();
+
+    if (prevValue.current === null) return;
+
+    const prevStep = prevValue.current;
+
+    if (prevStep < i && i - prevStep > 1) {
+      setSkipSteps(i - prevStep - 1);
+    } else if (prevStep > i && prevStep - i > 1) {
+      setSkipSteps(prevStep - i - 1);
+    }
+
+    setCurrentStep(i);
+  };
+
+  const onClickHandlerMiniLogo = () => {
+    if (showMainMenuDesctop) toggleMainMenuDesctop();
+    animateScroll.scrollToTop();
+  };
+
+  const onActivateLink = (i: number) => {
+    if (skipSteps > 0) {
+      setSkipSteps((p) => p - 1);
+      return;
+    }
+
+    scroll(i);
+    setCurrentStep(i);
+  };
+
   return (
-    <div className={s.mainBlock}>
+    <div ref={mainDivElement} className={s.mainBlock}>
       <Width>
         <div className={s.subHeader}>
           <CSSTransition
@@ -46,15 +130,27 @@ export const SubHeader: FC = () => {
             timeout={200}
             classNames="showMiniLogo"
           >
-            <div className={s.miniLogo}>
+            <div aria-hidden onClick={onClickHandlerMiniLogo} className={s.miniLogo}>
               <Image className={s.logoImg} height={35} width={31} src={logo} alt={'logo'} />
             </div>
           </CSSTransition>
           <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.close}`}>
-            <ul className={s.ul}>
-              {subHeaderMenu.map((itm) => (
-                <li key={itm.path}>
-                  <h4>{itm.name}</h4>
+            <ul ref={ulElement} className={s.ul}>
+              {subHeaderMenu.map((itm, i) => (
+                <li style={{ width: itm.width }} key={itm.path}>
+                  <Link
+                    to={itm.name}
+                    spy
+                    offset={-60}
+                    smooth
+                    onSetActive={() => onActivateLink(i)}
+                    onClick={() => onClickHandlerNavLink(i)}
+                    activeClass={s.active}
+                    duration={500}
+                    className={s.navLink}
+                  >
+                    <h4>{itm.name}</h4>
+                  </Link>
                 </li>
               ))}
             </ul>
