@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
@@ -6,7 +6,7 @@ import { Logo } from './Logo';
 import { useRouter } from 'next/router';
 import { Width } from 'components';
 import { useActions, useTypedSelector } from 'hooks';
-import { Phone, Messengers, ButtonRC, Hamburger } from 'components/UI';
+import { ButtonRC, Hamburger } from 'components/UI';
 import { IconButton } from '@mui/material';
 import s from 'styles/components/Layout/Header/Header.module.scss';
 
@@ -25,13 +25,6 @@ export const Header: FC = () => {
           <div className={s.logoBlockMobile}>
             <Logo mobile />
           </div>
-          {/* // ! Переделать дизайн */}
-          {/* <div className={s.socialsBlock}>
-            <Phone className={s.phone} />
-            <div className={s.messengers}>
-              <Messengers className={s.messanger} height="38" width="38" />
-            </div>
-          </div> */}
           <div className={s.buttonsBlock}>
             <div className={s.buttonContainer}>
               <ButtonRC color="white" style="rounded" className={s.button}>

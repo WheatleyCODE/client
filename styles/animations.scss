@@ -43,11 +43,11 @@
 }
 
 .showMiniLogo-enter-active {
-  animation: showMiniLogoMenu 0.2s forwards;
+  animation: showMiniLogoMenu 0.15s forwards;
 }
 
 .showMiniLogo-exit-active {
-  animation: showMiniLogoMenu 0.16s ease-in forwards reverse;
+  animation: showMiniLogoMenu 0.1s forwards reverse;
 }
 
 .showModal-enter-active {

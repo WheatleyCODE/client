@@ -51,28 +51,6 @@
   }
 }
 
-.socialsBlock {
-  .phone {
-    display: flex;
-    align-items: center;
-    height: 36px;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-  .messanger {
-    &:hover {
-      animation: hoverMessengers 0.2s ease-in;
-    }
-  }
-
-  .messengers {
-    display: flex;
-    justify-content: flex-end;
-    height: 36px;
-    margin-top: 10px;
-  }
-}
-
 .buttonsBlock {
   display: flex;
   flex-direction: column;
@@ -80,7 +58,7 @@
 
   .button {
     height: 36px;
-    font-size: 1.05rem;
+    font-size: 1rem;
     padding-right: 25px;
     padding-left: 25px;
 

@@ -133,7 +133,7 @@ export const SubHeader: FC = () => {
             mountOnEnter
             unmountOnExit
             in={isActive}
-            timeout={200}
+            timeout={150}
             classNames="showMiniLogo"
           >
             <div aria-hidden onClick={onClickHandlerMiniLogo} className={s.miniLogo}>
