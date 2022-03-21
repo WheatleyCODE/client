@@ -6,6 +6,7 @@ import { Element } from 'react-scroll';
 import { NextThunckDispatch } from '@store/reducers';
 import { fetchUsersAC } from '@store/actions-creators/user';
 import { MainLayout } from 'components';
+import { ImgSlider } from 'components/Sliders/ImgSlider';
 import { subHeaderMenu } from 'consts';
 import s from 'styles/pages/Home.module.scss';
 
@@ -24,13 +25,16 @@ const Home: NextPage = () => {
   // }, []);
   return (
     <MainLayout title="Главная" description="Главная" keywords={['Главная']}>
-      {loading && <h3 style={{ color: 'green' }}>Загрузка пользователей...</h3>}
-      {subHeaderMenu.map((item) => (
-        <Element name={item.name} key={item.name}>
-          <h4>{item.name}</h4>
-          <pre style={{ overflow: 'hidden' }}>{JSON.stringify(users, 0, 2)}</pre>
-        </Element>
-      ))}
+      <div className={s.mainBlock}>
+        {loading && <h3 style={{ color: 'green' }}>Загрузка пользователей...</h3>}
+        <ImgSlider />
+        {subHeaderMenu.map((item) => (
+          <Element name={item.name} key={item.name}>
+            <h4>{item.name}</h4>
+            <pre style={{ overflow: 'hidden' }}>{JSON.stringify(users, 0, 2)}</pre>
+          </Element>
+        ))}
+      </div>
     </MainLayout>
   );
 };

@@ -1,2 +1,12 @@
 @import '../variables.scss';
 @import '../mixins.scss';
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  pre {
+    width: 320px;
+  }
+}
