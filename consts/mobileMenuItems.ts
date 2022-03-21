@@ -15,8 +15,6 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 
-// const useRoute = useRouter();
-
 export const menuItemsFirst = [
   {
     name: 'Войти',

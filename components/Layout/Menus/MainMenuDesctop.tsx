@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Email, Messengers, Phone } from 'components/UI';
 import { Width } from 'components';
 import { useActions } from 'hooks';
-import { menu } from 'consts';
+import { desctopMenuItems } from 'consts';
 import { DesctopMenuList } from './DesctopMenuList';
 import s from 'styles/components/Layout/Menus/MainMenuDesctop.module.scss';
 
@@ -36,7 +36,7 @@ export const MainMenuDesctop: FC = () => {
         </Width>
         <Width>
           <div className={s.links}>
-            {menu.map(({ id, title, items }) => (
+            {desctopMenuItems.map(({ id, title, items }) => (
               <DesctopMenuList color="black" key={id} title={title} items={items} />
             ))}
           </div>

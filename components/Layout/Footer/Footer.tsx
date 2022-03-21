@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { Width, Phone, Email, Messengers } from 'components';
-import { menu, copyMenu, socials } from 'consts';
+import { copyMenu, socials, desctopMenuItems } from 'consts';
 import { StockBlock } from './StockBlock';
 import { DesctopMenuList } from '../Menus';
 import s from 'styles/components/Layout/Footer/Footer.module.scss';
@@ -12,7 +12,7 @@ export const Footer: FC = () => {
       <StockBlock title="Кешбек за отзыв" />
       <Width>
         <div className={s.links}>
-          {menu.map(({ id, title, items }) => (
+          {desctopMenuItems.map(({ id, title, items }) => (
             <DesctopMenuList color="white" key={id} title={title} items={items} />
           ))}
         </div>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import { CSSTransition } from 'react-transition-group';
-import { banners } from 'consts/banners';
+import { banners } from 'consts';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import s from 'styles/components/Sliders/ImgSlider.module.scss';

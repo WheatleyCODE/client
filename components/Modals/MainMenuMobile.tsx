@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import { Accordion, AccordionDetails, AccordionSummary, SwipeableDrawer } from '@mui/material';
-import { menuItemsFirst, menuItemsSecond } from 'consts/mobileMenuItems';
+import { menuItemsFirst, menuItemsSecond } from 'consts';
 import { Email, Messengers, Phone } from 'components/UI';
 import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
