@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
-import { ButtonRC } from 'components/UI';
 import { Checkbox, TextField } from '@mui/material';
-import { LinkRC } from 'components/UI';
+import { ButtonRC, LinkRC } from 'components/UI';
+import { useActions, useTypedSelector } from 'hooks';
 import { pathRoutes } from 'types';
 import s from 'styles/components/Auth/AuthForm.module.scss';
 
@@ -12,10 +12,16 @@ interface AuthFormProps {
 
 export const AuthForm: FC<AuthFormProps> = ({ isLogin = false, showTitle = false }) => {
   const [isRememberMe, setIsRememberMe] = useState(true);
+  const { showLoginModal } = useTypedSelector((state) => state.modals);
+  const { toggleLoginModalDesctop } = useActions();
+
+  const onClickHandler = () => {
+    if (showLoginModal) toggleLoginModalDesctop();
+  };
 
   return (
     <form className={s.mainBlock}>
-      {showTitle && <h2 className={s.title}>{isLogin ? ' Войти на сайт' : 'Регистрация'}</h2>}
+      {showTitle && <h1 className={s.title}>{isLogin ? 'Войти на сайт' : 'Регистрация'}</h1>}
       <TextField className={s.input} label="Почта" variant="outlined" />
       <TextField className={s.input} label="Пароль" variant="outlined" />
 
@@ -31,13 +37,16 @@ export const AuthForm: FC<AuthFormProps> = ({ isLogin = false, showTitle = false
           Запомнить меня
         </label>
         <div className={s.link}>
-          <LinkRC href={pathRoutes.LOGIN}>Забыли пароль?</LinkRC>
+          <LinkRC onClick={onClickHandler} href={pathRoutes.FORGOT}>
+            Забыли пароль?
+          </LinkRC>
         </div>
       </div>
 
       <ButtonRC className={s.button} style="default" color="primary">
         {isLogin ? 'Войти' : 'Регистрация'}
       </ButtonRC>
+
       <div className={s.hr} />
       <div className={s.text}>
         {isLogin ? (
@@ -47,9 +56,13 @@ export const AuthForm: FC<AuthFormProps> = ({ isLogin = false, showTitle = false
         )}
         <div className={s.link}>
           {isLogin ? (
-            <LinkRC href={pathRoutes.REGISTER}>Зарегистрироваться</LinkRC>
+            <LinkRC onClick={onClickHandler} href={pathRoutes.REGISTER}>
+              Зарегистрироваться
+            </LinkRC>
           ) : (
-            <LinkRC href={pathRoutes.LOGIN}>Войти</LinkRC>
+            <LinkRC onClick={onClickHandler} href={pathRoutes.LOGIN}>
+              Войти
+            </LinkRC>
           )}
         </div>
       </div>

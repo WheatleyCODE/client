@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Portal } from '@mui/material';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import { useActions, useTypedSelector } from 'hooks';
@@ -6,8 +7,9 @@ import { Footer } from './Footer';
 import { Header, SubHeader } from './Header';
 import { HeadTag } from './HeadTag';
 import { PageTitle } from './PageTitle';
-import { LoginModal, MainMenuMobile, MiniCart, Modal, SearchModal } from '../Modals';
-import { Portal } from '@mui/material';
+import { MainMenuMobile, MiniCart, Modal } from '../Modals';
+import { AuthForm } from 'components/Auth/AuthForm';
+import { pathRoutes } from 'types';
 import s from 'styles/components/Layout/MainLayout.module.scss';
 
 export interface MainLayoutProps {
@@ -28,27 +30,23 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.query.login === 'true') {
-      toggleLoginModalDesctop();
-    }
+    if (router.query.login === 'true') toggleLoginModalDesctop();
 
-    if (router.query.search === 'true') {
-      toggleSearchModalDesctop();
-    }
+    if (router.query.search === 'true') toggleSearchModalDesctop();
   }, [router.query]);
 
   const onCloseLoginModal = () => {
     router.push({
       query: {},
     });
-    toggleLoginModalDesctop();
+    if (showLoginModal) toggleLoginModalDesctop();
   };
 
   const onCloseSearchModal = () => {
     router.push({
       query: {},
     });
-    toggleSearchModalDesctop();
+    if (showSearchModal) toggleSearchModalDesctop();
   };
 
   const {
@@ -82,8 +80,12 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
           timeout={200}
           classNames="showModal"
         >
-          <Modal scrollDiseble onClose={() => onCloseLoginModal()}>
-            <LoginModal />
+          <Modal
+            bottomLink={{ title: 'На страницу входа', path: pathRoutes.LOGIN }}
+            scrollDisable
+            onClose={() => onCloseLoginModal()}
+          >
+            <AuthForm showTitle isLogin />
           </Modal>
         </CSSTransition>
       </Portal>
@@ -96,8 +98,12 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
           timeout={200}
           classNames="showModal"
         >
-          <Modal scrollDiseble onClose={() => onCloseSearchModal()}>
-            <SearchModal />
+          <Modal
+            bottomLink={{ title: 'На страницу поиска', path: pathRoutes.SEARCH }}
+            scrollDisable
+            onClose={() => onCloseSearchModal()}
+          >
+            <h1>Поиск эмалей</h1>
           </Modal>
         </CSSTransition>
       </Portal>

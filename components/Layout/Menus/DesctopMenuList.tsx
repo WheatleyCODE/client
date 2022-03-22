@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { MenuItem } from 'types';
 import { DesctopMenuItem } from './DesctopMenuItem';
+import { MenuItem } from 'types';
 import s from 'styles/components/Layout/Menus/DesctopMenuList.module.scss';
 
 export interface DesctopMenuListProps {

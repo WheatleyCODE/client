@@ -1,9 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import { Email, Messengers, Phone } from 'components/UI';
-import { Width } from 'components';
 import { useActions } from 'hooks';
-import { desctopMenuItems } from 'consts';
+import { Email, Messengers, Phone } from 'components/UI';
 import { DesctopMenuList } from './DesctopMenuList';
+import { Width } from 'components';
+import { desctopMenuItems } from 'consts';
+import { disableScroll } from 'utils';
 import s from 'styles/components/Layout/Menus/MainMenuDesctop.module.scss';
 
 export const MainMenuDesctop: FC = () => {
@@ -11,21 +12,16 @@ export const MainMenuDesctop: FC = () => {
   const [className, setClassName] = useState('');
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    document.body.style.width = '100%';
+    const enableScroll = disableScroll({
+      onWinHandler: () => {
+        setClassName(s.padding);
+      },
+      onWinReturnHandler: () => {
+        setClassName('');
+      },
+    });
 
-    const { platform } = window.navigator;
-
-    if (platform === 'Win32') {
-      document.body.style.paddingRight = '17px';
-      setClassName(s.padding);
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '0px';
-      setClassName('');
-    };
+    return enableScroll;
   }, []);
 
   return (

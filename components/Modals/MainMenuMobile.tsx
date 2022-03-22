@@ -2,10 +2,10 @@ import React, { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import { Accordion, AccordionDetails, AccordionSummary, SwipeableDrawer } from '@mui/material';
-import { menuItemsFirst, menuItemsSecond } from 'consts';
-import { Email, Messengers, Phone } from 'components/UI';
-import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
+import { Email, Messengers, Phone } from 'components/UI';
+import { menuItemsFirst, menuItemsSecond } from 'consts';
+import { pathRoutes } from 'types';
 import s from 'styles/components/Modals/MainMenuMobile.module.scss';
 
 interface MainMenuMobileProps {
@@ -24,9 +24,7 @@ export const MainMenuMobile: FC<MainMenuMobileProps> = ({ show }) => {
     };
 
   const onClickHandler = (path: pathRoutes) => {
-    if (showMainMenuMobile) {
-      toggleMainMenuMobile();
-    }
+    if (showMainMenuMobile) toggleMainMenuMobile();
 
     router.push(path);
   };

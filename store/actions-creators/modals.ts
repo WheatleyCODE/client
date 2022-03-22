@@ -1,4 +1,4 @@
-import { ModalsActionTypes, ModalsAction } from '@t';
+import { ModalsActionTypes, ModalsAction } from 'types';
 
 export const toggleMiniCart = (): ModalsAction => ({
   type: ModalsActionTypes.TOGGLE_MINI_CART,

@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import { FC, MouseEvent } from 'react';
+import { Button } from '@mui/material';
 import s from 'styles/components/UI/ButtonRC.module.scss';
 
 export interface ButtonRCProps {

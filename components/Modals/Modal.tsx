@@ -1,30 +1,35 @@
 import { FC, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import { BackDrop } from './BackDrop';
+import { pathRoutes } from 'types';
+import { disableScroll } from 'utils';
 import s from 'styles/components/Modals/Modal.module.scss';
 
 export interface ModalProps {
   onClose: () => void;
-  scrollDiseble?: boolean;
+  scrollDisable?: boolean;
+  bottomLink: {
+    title: string;
+    path: pathRoutes;
+  };
 }
 
-export const Modal: FC<ModalProps> = ({ onClose, children, scrollDiseble = false }) => {
+export const Modal: FC<ModalProps> = ({ onClose, children, scrollDisable = false, bottomLink }) => {
+  const router = useRouter();
+
+  const onClickHandler = () => {
+    onClose();
+    router.push(bottomLink.path);
+  };
+
   useEffect(() => {
-    if (!scrollDiseble) return;
+    if (!scrollDisable) return;
 
-    document.body.style.overflow = 'hidden';
-    document.body.style.width = '100%';
+    const enableScroll = disableScroll();
 
-    const { platform } = window.navigator;
-
-    if (platform === 'Win32') {
-      document.body.style.paddingRight = '17px';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '0px';
-    };
+    return enableScroll;
   }, []);
 
   return (
@@ -34,6 +39,9 @@ export const Modal: FC<ModalProps> = ({ onClose, children, scrollDiseble = false
           <ClearRoundedIcon />
         </div>
         {children}
+        <div onClick={onClickHandler} className={s.link}>
+          {bottomLink.title} <LoginRoundedIcon />
+        </div>
       </div>
     </BackDrop>
   );

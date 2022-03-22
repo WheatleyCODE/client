@@ -2,12 +2,12 @@ import { FC } from 'react';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
-import { Logo } from './Logo';
-import { useRouter } from 'next/router';
-import { Width } from 'components';
-import { useActions, useTypedSelector } from 'hooks';
-import { ButtonRC, Hamburger } from 'components/UI';
 import { IconButton } from '@mui/material';
+import { useRouter } from 'next/router';
+import { useActions, useTypedSelector } from 'hooks';
+import { Width } from 'components';
+import { ButtonRC, Hamburger } from 'components/UI';
+import { Logo } from './Logo';
 import s from 'styles/components/Layout/Header/Header.module.scss';
 
 export const Header: FC = () => {

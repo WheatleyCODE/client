@@ -1,12 +1,11 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { pathRoutes } from 'types';
 import { useActions, useTypedSelector } from 'hooks';
-import logo from 'public/logo.png';
 import { MainMenuDesctop } from '../Menus';
-import { ButtonRC, Hamburger } from 'components/UI';
+import { pathRoutes } from 'types';
+import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/Logo.module.scss';
 
 export interface LogoProps {

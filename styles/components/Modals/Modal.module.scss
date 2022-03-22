@@ -1,12 +1,14 @@
 @import 'styles/variables.scss';
+@import 'styles/mixins.scss';
 
 .mainBlock {
+  @include flex-center;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 10px;
   background-color: $colorWhite;
+  flex-direction: column;
+  padding: 45px;
+  width: 500px;
 
   .closeButton {
     position: absolute;
@@ -23,6 +25,29 @@
 
     &:hover {
       transform: rotate(180deg);
+    }
+  }
+
+  .link {
+    transition: all 0.1s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $colorWhite;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: -45px;
+    cursor: pointer;
+    margin-top: 35px;
+    font-size: 1.15rem;
+    color: $colorWhite;
+
+    svg {
+      font-size: 1.1rem;
+      margin-left: 3px;
+    }
+
+    &:hover {
+      border-bottom: 1px solid rgba(0, 0, 0, 0);
     }
   }
 }

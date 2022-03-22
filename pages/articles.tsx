@@ -1,5 +1,5 @@
-import { Container, MainLayout, Width } from 'components';
 import type { NextPage } from 'next';
+import { Container, MainLayout, Width } from 'components';
 import s from 'styles/pages/Articles.module.scss';
 
 const Articles: NextPage = () => {

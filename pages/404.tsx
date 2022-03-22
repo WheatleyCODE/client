@@ -1,13 +1,14 @@
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { pathRoutes } from 'types';
 import s from 'styles/pages/404.module.scss';
 
 const Error: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/');
+    router.push(pathRoutes.HOME);
   }, []);
 
   return (

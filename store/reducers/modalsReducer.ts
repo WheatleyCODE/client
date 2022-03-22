@@ -1,4 +1,4 @@
-import { ModalsState, ModalsActionTypes, ModalsAction } from '@t';
+import { ModalsState, ModalsActionTypes, ModalsAction } from 'types';
 
 const initialState: ModalsState = {
   showMiniCart: false,

@@ -1,19 +1,22 @@
 import { FC } from 'react';
-import { pathRoutes } from 'types';
 import { useRouter } from 'next/router';
+import { pathRoutes } from 'types';
 import s from 'styles/components/UI/LinkRC.module.scss';
 
 export interface LinkProps {
   className?: string;
   href: pathRoutes;
+  onClick?: (e?: React.MouseEvent) => void;
 }
 
-export const LinkRC: FC<LinkProps> = ({ className, children, href }) => {
+export const LinkRC: FC<LinkProps> = ({ className, children, href, onClick }) => {
   const router = useRouter();
 
   const onClickHandler = (e: React.MouseEvent): void => {
     e.preventDefault();
     router.push(href);
+
+    if (onClick) onClick(e);
   };
 
   return (
