@@ -16,6 +16,7 @@ export enum pathRoutes {
   USER_ACCOUNT = '/user',
   CART = '/cart',
   LOGIN = '/login',
+  REGISTER = '/register',
 }
 
 export interface MenuItem {

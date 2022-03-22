@@ -82,7 +82,7 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
           timeout={200}
           classNames="showModal"
         >
-          <Modal onClose={() => onCloseLoginModal()}>
+          <Modal scrollDiseble onClose={() => onCloseLoginModal()}>
             <LoginModal />
           </Modal>
         </CSSTransition>
@@ -96,7 +96,7 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
           timeout={200}
           classNames="showModal"
         >
-          <Modal onClose={() => onCloseSearchModal()}>
+          <Modal scrollDiseble onClose={() => onCloseSearchModal()}>
             <SearchModal />
           </Modal>
         </CSSTransition>

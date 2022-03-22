@@ -15,6 +15,18 @@ export const Header: FC = () => {
   const { toggleMainMenuMobile } = useActions();
   const { showMainMenuMobile } = useTypedSelector((state) => state.modals);
 
+  const onClickLogin = () => {
+    router.push({
+      query: { login: true },
+    });
+  };
+
+  const onClickSearch = () => {
+    router.push({
+      query: { search: true },
+    });
+  };
+
   return (
     <header className={showMainMenuMobile ? `${s.mainBlock} ${s.black}` : s.mainBlock}>
       <Width>
@@ -32,28 +44,10 @@ export const Header: FC = () => {
               </ButtonRC>
             </div>
             <div className={s.buttonContainer}>
-              <ButtonRC
-                onClick={() =>
-                  router.push({
-                    query: { search: true },
-                  })
-                }
-                color="white"
-                style="rounded"
-                className={s.button}
-              >
+              <ButtonRC onClick={onClickSearch} color="white" style="rounded" className={s.button}>
                 <h4>Найти код краски</h4> <SearchRoundedIcon />
               </ButtonRC>
-              <ButtonRC
-                onClick={() =>
-                  router.push({
-                    query: { login: true },
-                  })
-                }
-                color="white"
-                style="rounded"
-                className={s.button}
-              >
+              <ButtonRC onClick={onClickLogin} color="white" style="rounded" className={s.button}>
                 <h4>Войти</h4> <LoginRoundedIcon />
               </ButtonRC>
             </div>

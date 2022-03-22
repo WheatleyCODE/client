@@ -29,3 +29,14 @@
     border: 1px solid $colorOrange;
   }
 }
+
+.buttonRC.primary {
+  background-color: $colorPrimary;
+  border: none;
+  color: $colorWhite;
+
+  &:hover {
+    background-color: $colorDarkPrimary;
+    border: none;
+  }
+}

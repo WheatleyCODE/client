@@ -1,0 +1,17 @@
+@import 'styles/variables.scss';
+
+.mainBlock {
+  transition: border 0.2s;
+
+  a {
+    color: $colorPrimary;
+    display: flex;
+    align-items: center;
+  }
+
+  border-bottom: 1px solid $colorPrimary;
+
+  &:hover {
+    border-bottom: 1px solid $colorWhite;
+  }
+}

@@ -1,0 +1,66 @@
+@import 'styles/variables.scss';
+
+.mainBlock {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+  }
+
+  .input {
+    width: 100%;
+    margin-top: 15px;
+
+    &:hover {
+      fieldset {
+        border-color: $colorPrimary;
+      }
+    }
+  }
+
+  .hr {
+    border-bottom: 1px solid $colorGrey;
+    margin: 20px 0;
+  }
+
+  .button {
+    height: 55px;
+    margin-top: 15px;
+
+    font-size: 1.1rem;
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .question {
+    margin-right: 10px;
+  }
+
+  .forgot {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-left: -10px;
+    }
+
+    .checkbox {
+      width: 40px;
+      margin-right: 2px;
+    }
+  }
+}

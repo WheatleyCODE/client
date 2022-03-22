@@ -7,7 +7,7 @@ export interface ButtonRCProps {
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'outlined' | 'contained';
   style: 'rounded' | 'default';
-  color?: 'white' | 'orange';
+  color?: 'white' | 'orange' | 'primary';
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
