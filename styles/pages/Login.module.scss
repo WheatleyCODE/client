@@ -2,7 +2,9 @@
 
 .mainBlock {
   padding: 0 20px;
+  height: calc(100vh - 300px);
   display: flex;
+  padding-top: 100px;
   justify-content: center;
 }
 
