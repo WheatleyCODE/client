@@ -16,15 +16,23 @@ export const Header: FC = () => {
   const { showMainMenuMobile } = useTypedSelector((state) => state.modals);
 
   const onClickLogin = () => {
-    router.push({
-      query: { login: true },
-    });
+    router.push(
+      {
+        query: { login: true },
+      },
+      '',
+      { shallow: true }
+    );
   };
 
   const onClickSearch = () => {
-    router.push({
-      query: { search: true },
-    });
+    router.push(
+      {
+        query: { search: true },
+      },
+      '',
+      { shallow: true }
+    );
   };
 
   return (

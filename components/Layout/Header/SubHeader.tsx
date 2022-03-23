@@ -1,12 +1,13 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { CSSTransition } from 'react-transition-group';
-import { Link, animateScroll } from 'react-scroll';
+import { useRouter } from 'next/router';
+import { Link, animateScroll, scroller } from 'react-scroll';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import { useActions, useTypedSelector } from 'hooks';
 import { Width } from 'components';
 import { ButtonRC } from 'components/UI';
 import { subHeaderMenu } from 'consts';
+import { pathRoutes } from 'types';
 import logo from 'public/logo.png';
 import s from 'styles/components/Layout/Header/SubHeader.module.scss';
 
@@ -20,11 +21,10 @@ const DEFAULT_STEP = 0;
 
 export const SubHeader: FC = () => {
   const [objectWidth, setObjectWidth] = useState<ObjectWidth>({});
-  const [isActive, setIsActive] = useState(false);
-
   const [currentStep, setCurrentStep] = useState(DEFAULT_STEP);
   const [skipSteps, setSkipSteps] = useState(DEFAULT_STEP);
   const prevStep = useRef(DEFAULT_STEP);
+  const router = useRouter();
 
   const { toggleMiniCart, toggleMainMenuDesctop } = useActions();
   const { showMainMenuDesctop } = useTypedSelector((state) => state.modals);
@@ -42,20 +42,13 @@ export const SubHeader: FC = () => {
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      ([e]) => e.target.toggleAttribute('stuck', e.intersectionRatio < 1),
+      ([e]) => {
+        e.target.toggleAttribute('stuck', e.intersectionRatio < 1);
+      },
       { threshold: [1] }
     );
 
-    const muObserver = new MutationObserver((mutations) => {
-      mutations.forEach(() => {
-        setIsActive((p) => !p);
-      });
-    });
-
-    const config = { attributes: true, childList: false, characterData: false };
-
     observer.observe(element);
-    muObserver.observe(element, config);
   }, []);
 
   useEffect(() => {
@@ -102,6 +95,17 @@ export const SubHeader: FC = () => {
   const onClickHandlerNavLink = (i: number) => {
     if (showMainMenuDesctop) toggleMainMenuDesctop();
 
+    if (router.pathname !== pathRoutes.HOME) {
+      router.push({
+        pathname: pathRoutes.HOME,
+        hash: `${subHeaderMenu[i].path}`,
+      });
+
+      return;
+    }
+
+    location.hash = `${subHeaderMenu[i].path}`;
+
     checkStep(i);
     setCurrentStep(i);
   };
@@ -112,6 +116,8 @@ export const SubHeader: FC = () => {
     checkStep(DEFAULT_STEP);
     setCurrentStep(DEFAULT_STEP);
 
+    history.pushState('', document.title, window.location.pathname);
+
     animateScroll.scrollToTop();
   };
 
@@ -121,38 +127,48 @@ export const SubHeader: FC = () => {
       return;
     }
 
+    location.hash = `${subHeaderMenu[i].path}`;
+
     scroll(i);
     setCurrentStep(i);
   };
+
+  useEffect(() => {
+    const hash = location.hash.slice(1);
+
+    if (hash) {
+      const index = subHeaderMenu.findIndex((item) => item.path === hash);
+      checkStep(index);
+      scroll(index);
+      setCurrentStep(index);
+
+      scroller.scrollTo(subHeaderMenu[index].name, {
+        duration: 400,
+        offset: -50,
+      });
+    }
+  }, []);
 
   return (
     <div ref={mainDivElement} className={s.mainBlock}>
       <Width>
         <div className={s.subHeader}>
-          <CSSTransition
-            mountOnEnter
-            unmountOnExit
-            in={isActive}
-            timeout={150}
-            classNames="showMiniLogo"
-          >
-            <div aria-hidden onClick={onClickHandlerMiniLogo} className={s.miniLogo}>
-              <Image className={s.logoImg} height={35} width={31} src={logo} alt={'logo'} />
-            </div>
-          </CSSTransition>
-          <nav className={isActive ? `${s.menu} ${s.show}` : `${s.menu} ${s.close}`}>
+          <div aria-hidden onClick={onClickHandlerMiniLogo} className={s.miniLogo}>
+            <Image className={s.logoImg} height={35} width={31} src={logo} alt={'logo'} />
+          </div>
+          <nav className={s.menu}>
             <ul ref={ulElement} className={s.ul}>
               {subHeaderMenu.map((itm, i) => (
                 <li style={{ width: itm.width }} key={itm.path}>
                   <Link
                     to={itm.name}
                     spy
-                    offset={-60}
+                    offset={-50}
                     smooth
                     onSetActive={() => onActivateLink(i)}
                     onClick={() => onClickHandlerNavLink(i)}
                     activeClass={s.active}
-                    duration={500}
+                    duration={400}
                     className={s.navLink}
                   >
                     <h4>{itm.name}</h4>

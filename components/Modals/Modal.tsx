@@ -19,9 +19,12 @@ export interface ModalProps {
 export const Modal: FC<ModalProps> = ({ onClose, children, scrollDisable = false, bottomLink }) => {
   const router = useRouter();
 
-  const onClickHandler = () => {
+  const onClickHandler = (path?: pathRoutes) => {
+    router.push({
+      pathname: path || null,
+      query: {},
+    });
     onClose();
-    router.push(bottomLink.path);
   };
 
   useEffect(() => {
@@ -33,13 +36,13 @@ export const Modal: FC<ModalProps> = ({ onClose, children, scrollDisable = false
   }, []);
 
   return (
-    <BackDrop onClose={onClose}>
+    <BackDrop onClose={() => onClickHandler()}>
       <div onClick={(e) => e.stopPropagation()} className={s.mainBlock}>
-        <div onClick={() => onClose()} className={s.closeButton}>
+        <div onClick={() => onClickHandler()} className={s.closeButton}>
           <ClearRoundedIcon />
         </div>
         {children}
-        <div onClick={onClickHandler} className={s.link}>
+        <div onClick={() => onClickHandler(bottomLink.path)} className={s.link}>
           {bottomLink.title} <LoginRoundedIcon />
         </div>
       </div>

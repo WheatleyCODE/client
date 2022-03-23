@@ -1,32 +1,32 @@
 export const subHeaderMenu = [
   {
     name: 'Штрих-корректоры',
-    path: 'id1',
+    path: 'correctors',
     width: 151,
   },
   {
     name: 'Маркеры',
-    path: 'id2',
+    path: 'markers',
     width: 84,
   },
   {
     name: 'Баллончики',
-    path: 'id3',
+    path: 'spray',
     width: 103,
   },
   {
     name: 'Эмаль',
-    path: 'id4',
+    path: 'paints',
     width: 65,
   },
   {
     name: 'Комплекты',
-    path: 'id5',
+    path: 'sets',
     width: 99,
   },
   {
     name: 'Расходные материалы',
-    path: 'id6',
+    path: 'materials',
     width: 175,
   },
 ];

@@ -36,16 +36,10 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
   }, [router.query]);
 
   const onCloseLoginModal = () => {
-    router.push({
-      query: {},
-    });
     if (showLoginModal) toggleLoginModalDesctop();
   };
 
   const onCloseSearchModal = () => {
-    router.push({
-      query: {},
-    });
     if (showSearchModal) toggleSearchModalDesctop();
   };
 
